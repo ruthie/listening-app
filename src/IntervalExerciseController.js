@@ -17,12 +17,25 @@ class IntervalExerciseController extends Component {
         super()
 
         this.state = {
-            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
+            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            submittedAnswers: []
         }
+        this.handleAnswerClick = this.handleAnswerClick.bind(this)
+    }
+
+    handleAnswerClick(e) {
+        this.setState({
+            submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value])
+        })
     }
 
     render() {
-        return <IntervalExercise interval={this.state.interval} possibleAnswers={POSSIBLE_INTERVALS}/>
+        return <IntervalExercise
+            interval={this.state.interval}
+            possibleAnswers={POSSIBLE_INTERVALS}
+            submittedAnswers={this.state.submittedAnswers}
+            onAnswerClick={this.handleAnswerClick}
+        />
     }
 }
 
