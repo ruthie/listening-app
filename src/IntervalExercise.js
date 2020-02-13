@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class IntervalExercise extends Component {
-    render() {
-        return (
-            <button>{this.props.buttonTitle}</button>
-        )
-    }
+function IntervalExercise({ interval }) {
+    return (
+        <div>
+            {interval.toString()}
+        </div>
+    )
 }
 
 IntervalExercise.propTypes = {
-    buttonTitle: PropTypes.string,
+    interval: PropTypes.object, // Teoria interval
 }
 
 export default IntervalExercise
