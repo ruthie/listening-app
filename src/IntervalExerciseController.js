@@ -22,7 +22,7 @@ class IntervalExerciseController extends Component {
     }
 
     render() {
-        return <IntervalExercise interval={this.state.interval}/>
+        return <IntervalExercise interval={this.state.interval} possibleAnswers={POSSIBLE_INTERVALS}/>
     }
 }
 
