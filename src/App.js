@@ -1,5 +1,5 @@
 import React from 'react';
-import IntervalExercise  from './IntervalExercise.js'
+import IntervalExerciseController  from './IntervalExerciseController.js'
 
 import logo from './logo.svg';
 import './App.css';
@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <IntervalExercise buttonTitle="click me!"/>
+      <IntervalExerciseController/>
     </div>
   );
 }
