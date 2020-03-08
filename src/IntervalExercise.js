@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Tone from "tone";
 
 import './AnswerButton.css';
 
@@ -20,9 +21,11 @@ class IntervalExercise extends Component {
 
     render() {
         const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
+        var synth = new Tone.Synth().toMaster()
+
         return (
             <div>
-                <PlaySoundButton onClick={function() {alert(interval.toString())} } />
+                <PlaySoundButton onClick={function() {synth.triggerAttackRelease('C4', '8n')}}/>
                 {possibleAnswers.map(x => {
                     var intervalName = x.toString()
 
