@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tone from "tone";
+import Teoria from "teoria";
 
 import './AnswerButton.css';
 
@@ -24,11 +25,14 @@ class IntervalExercise extends Component {
 
         var synth = new Tone.Synth().toMaster()
         var playInterval = function() {
-           var bottomNote = 'C4';
-           var topNote = 'D4';
+           var bottomNoteName = 'C4'
+           var topNote = Teoria.interval(
+             Teoria.note(bottomNoteName), interval
+           )
+           var topNoteName = topNote.name() + topNote.octave()
 
-           synth.triggerAttackRelease(bottomNote, '4n')
-           synth.triggerAttackRelease(topNote, '4n', Tone.Time('4n'))
+           synth.triggerAttackRelease(bottomNoteName, '4n')
+           synth.triggerAttackRelease(topNoteName, '4n', Tone.Time('4n'))
         }
 
         return (
