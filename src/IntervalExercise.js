@@ -9,6 +9,12 @@ function AnswerButton({ text, onClick, value, color }) {
     )
 }
 
+function PlaySoundButton({ onClick }) {
+    return (
+        <button onClick={onClick}> Play Sound </button>
+    )
+}
+
 class IntervalExercise extends Component {
 
 
@@ -16,7 +22,7 @@ class IntervalExercise extends Component {
         const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
         return (
             <div>
-                {interval.toString()}
+                <PlaySoundButton onClick={function() {alert(interval.toString())} } />
                 {possibleAnswers.map(x => {
                     var intervalName = x.toString()
 
