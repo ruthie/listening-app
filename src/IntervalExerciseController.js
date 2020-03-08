@@ -4,8 +4,19 @@ import Teoria from "teoria";
 import IntervalExercise from "./IntervalExercise.js";
 
 const POSSIBLE_INTERVALS = [
+    Teoria.interval('m2'),
     Teoria.interval('M2'),
     Teoria.interval('m3'),
+    Teoria.interval('M3'),
+    Teoria.interval('P4'),
+    Teoria.interval('d5'),
+    Teoria.interval('P5'),
+    Teoria.interval('m6'),
+    Teoria.interval('M6'),
+    Teoria.interval('m7'),
+    Teoria.interval('M7'),
+    // TODO: include octave
+
 ]
 
 function getRandomInt(max) {
