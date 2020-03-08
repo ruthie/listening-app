@@ -21,11 +21,19 @@ class IntervalExercise extends Component {
 
     render() {
         const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
+
         var synth = new Tone.Synth().toMaster()
+        var playInterval = function() {
+           var bottomNote = 'C4';
+           var topNote = 'D4';
+
+           synth.triggerAttackRelease(bottomNote, '4n')
+           synth.triggerAttackRelease(topNote, '4n', Tone.Time('4n'))
+        }
 
         return (
             <div>
-                <PlaySoundButton onClick={function() {synth.triggerAttackRelease('C4', '8n')}}/>
+                <PlaySoundButton onClick={playInterval}/>
                 {possibleAnswers.map(x => {
                     var intervalName = x.toString()
 
