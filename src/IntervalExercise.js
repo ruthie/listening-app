@@ -29,7 +29,7 @@ class IntervalExercise extends Component {
            var topNote = Teoria.interval(
              Teoria.note(bottomNoteName), interval
            )
-           var topNoteName = topNote.name() + topNote.octave()
+           var topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
            synth.triggerAttackRelease(bottomNoteName, '4n')
            synth.triggerAttackRelease(topNoteName, '4n', Tone.Time('4n'))
