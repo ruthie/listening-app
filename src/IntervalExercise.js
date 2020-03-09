@@ -23,8 +23,8 @@ class IntervalExercise extends Component {
     render() {
         const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
 
-        var synth = new Tone.Synth().toMaster()
         var playInterval = function() {
+           var synth = new Tone.Synth().toMaster()
            var bottomNoteName = 'C4'
            var topNote = Teoria.interval(
              Teoria.note(bottomNoteName), interval
