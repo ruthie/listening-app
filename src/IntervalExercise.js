@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Tone from "tone";
+import Teoria from "teoria";
 
 import './AnswerButton.css';
 
@@ -9,14 +11,37 @@ function AnswerButton({ text, onClick, value, color }) {
     )
 }
 
-class IntervalExercise extends Component {
+function PlaySoundButton({ onClick }) {
+    return (
+        <button onClick={onClick}> Play Sound </button>
+    )
+}
 
+class IntervalExercise extends Component {
+  constructor() {
+      super()
+      this.playInterval = this.playInterval.bind(this)
+  }
+
+
+    playInterval() {
+        var synth = new Tone.Synth().toMaster()
+        var bottomNoteName = 'C4'
+        var topNote = Teoria.interval(
+          Teoria.note(bottomNoteName), this.props.interval
+        )
+        var topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
+
+        synth.triggerAttackRelease(bottomNoteName, '4n')
+        synth.triggerAttackRelease(topNoteName, '4n', Tone.Time('4n'))
+    }
 
     render() {
         const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
+
         return (
             <div>
-                {interval.toString()}
+                <PlaySoundButton onClick={this.playInterval}/>
                 {possibleAnswers.map(x => {
                     var intervalName = x.toString()
 
