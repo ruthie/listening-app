@@ -33,7 +33,7 @@ class IntervalExercise extends Component {
         var topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
         synth.triggerAttackRelease(bottomNoteName, '4n')
-        synth.triggerAttackRelease(topNoteName, '4n', Tone.Time('4n'))
+        synth.triggerAttackRelease(topNoteName, '4n', Tone.now() + Tone.Time('4n'))
     }
 
     render() {
