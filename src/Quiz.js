@@ -11,7 +11,11 @@ function ContinueButton({ onClick }) {
 class Quiz extends Component {
     render() {
         var maybeContinueButton;
-        if (this.props.currentExercise < this.props.numExercises - 1) {
+        if (// we've answered correctly
+            this.props.submittedAnswers.includes(this.props.interval.toString())
+            // and this is not the last exercise
+            && this.props.currentExercise < this.props.numExercises - 1
+          ) {
           maybeContinueButton = <ContinueButton
             onClick={this.props.onContinueClick}
           />
