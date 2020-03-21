@@ -1,7 +1,6 @@
 import React from 'react';
 import QuizController  from './QuizController.js'
 
-import logo from './logo.svg';
 import './App.css';
 
 
