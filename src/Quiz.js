@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import IntervalExerciseController  from './IntervalExerciseController.js'
+import IntervalExercise  from './IntervalExercise.js'
 import PropTypes from "prop-types";
 
 class Quiz extends Component {
 
     render() {
-        return <IntervalExerciseController
+        return <IntervalExercise
             interval={this.props.interval}
             possibleAnswers={this.props.possibleAnswers}
             submittedAnswers={this.props.submittedAnswers}
