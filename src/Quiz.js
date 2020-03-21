@@ -2,15 +2,27 @@ import React, { Component } from "react";
 import IntervalExercise  from './IntervalExercise.js'
 import PropTypes from "prop-types";
 
+function ContinueButton({ onClick }) {
+    return (
+        <button onClick={onClick}> Continue </button>
+    )
+}
+
 class Quiz extends Component {
 
+
     render() {
-        return <IntervalExercise
-            interval={this.props.interval}
-            possibleAnswers={this.props.possibleAnswers}
-            submittedAnswers={this.props.submittedAnswers}
-            onAnswerClick={this.props.onAnswerClick}
-        />
+        return (<div>
+            <IntervalExercise
+              interval={this.props.interval}
+              possibleAnswers={this.props.possibleAnswers}
+              submittedAnswers={this.props.submittedAnswers}
+              onAnswerClick={this.props.onAnswerClick}
+            />
+            <ContinueButton
+              onClick={this.props.onContinueClick}
+            />
+        </div>)
     }
 }
 

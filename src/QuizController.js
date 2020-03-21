@@ -30,12 +30,21 @@ class QuizController extends Component {
           interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
           submittedAnswers: []
       }
+
       this.handleAnswerClick = this.handleAnswerClick.bind(this)
+      this.handleContinueClick = this.handleContinueClick.bind(this)
   }
 
   handleAnswerClick(e) {
       this.setState({
           submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value])
+      })
+  }
+
+  handleContinueClick(e) {
+      this.setState({
+          submittedAnswers: [],
+          interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
       })
   }
 
@@ -45,6 +54,7 @@ class QuizController extends Component {
             possibleAnswers={POSSIBLE_INTERVALS}
             submittedAnswers={this.state.submittedAnswers}
             onAnswerClick={this.handleAnswerClick}
+            onContinueClick={this.handleContinueClick}
         />
     }
 }
