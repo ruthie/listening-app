@@ -27,6 +27,8 @@ class QuizController extends Component {
       super()
 
       this.state = {
+          numExercises: 10,
+          currentExercise: 0,
           interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
           submittedAnswers: []
       }
@@ -45,6 +47,7 @@ class QuizController extends Component {
       this.setState({
           submittedAnswers: [],
           interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+          currentExercise: this.state.currentExercise + 1
       })
   }
 
@@ -54,6 +57,8 @@ class QuizController extends Component {
             possibleAnswers={POSSIBLE_INTERVALS}
             submittedAnswers={this.state.submittedAnswers}
             onAnswerClick={this.handleAnswerClick}
+            numExercises={this.state.numExercises}
+            currentExercise={this.state.currentExercise}
             onContinueClick={this.handleContinueClick}
         />
     }

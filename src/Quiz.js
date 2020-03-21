@@ -9,9 +9,14 @@ function ContinueButton({ onClick }) {
 }
 
 class Quiz extends Component {
-
-
     render() {
+        var maybeContinueButton;
+        if (this.props.currentExercise < this.props.numExercises - 1) {
+          maybeContinueButton = <ContinueButton
+            onClick={this.props.onContinueClick}
+          />
+        }
+
         return (<div>
             <IntervalExercise
               interval={this.props.interval}
@@ -19,9 +24,7 @@ class Quiz extends Component {
               submittedAnswers={this.props.submittedAnswers}
               onAnswerClick={this.props.onAnswerClick}
             />
-            <ContinueButton
-              onClick={this.props.onContinueClick}
-            />
+            {maybeContinueButton}
         </div>)
     }
 }
@@ -31,6 +34,8 @@ Quiz.propTypes = {
     possibleAnswers: PropTypes.arrayOf(PropTypes.object), // Array of Teoria intervals
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // Array of string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
+    numExercises: PropTypes.number,
+    currentExercise: PropTypes.number,
 }
 
 export default Quiz
