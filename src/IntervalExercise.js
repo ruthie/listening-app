@@ -47,7 +47,7 @@ class IntervalExercise extends Component {
 
                     var color = 'white'
                     if (submittedAnswers.includes(x.toString())) {
-                        color = intervalName == interval ? 'green' : 'red'
+                        color = intervalName === interval.toString() ? 'green' : 'red'
                     }
 
                     return (
