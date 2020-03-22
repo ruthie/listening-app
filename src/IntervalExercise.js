@@ -18,17 +18,17 @@ function PlaySoundButton({ onClick }) {
 }
 
 class IntervalExercise extends Component {
-  constructor() {
-      super()
-      this.playInterval = this.playInterval.bind(this)
-  }
+    constructor() {
+        super()
+        this.playInterval = this.playInterval.bind(this)
+    }
 
 
     playInterval() {
         var synth = new Tone.Synth().toMaster()
         var bottomNoteName = 'C4'
         var topNote = Teoria.interval(
-          Teoria.note(bottomNoteName), this.props.interval
+            Teoria.note(bottomNoteName), this.props.interval
         )
         var topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
@@ -50,12 +50,15 @@ class IntervalExercise extends Component {
                         color = intervalName == interval ? 'green' : 'red'
                     }
 
-                    return <AnswerButton
-                        key={intervalName}
-                        text={intervalName}
-                        value={intervalName}
-                        color={color}
-                        onClick={onAnswerClick}/>
+                    return (
+                        <AnswerButton
+                            key={intervalName}
+                            text={intervalName}
+                            value={intervalName}
+                            color={color}
+                            onClick={onAnswerClick}
+                        />
+                    )
                 })}
             </div>
         )

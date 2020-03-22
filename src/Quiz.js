@@ -11,25 +11,30 @@ function ContinueButton({ onClick }) {
 class Quiz extends Component {
     render() {
         var maybeContinueButton;
-        if (// we've answered correctly
+        if (
+            // we've answered correctly
             this.props.submittedAnswers.includes(this.props.interval.toString())
             // and this is not the last exercise
             && this.props.currentExercise < this.props.numExercises - 1
-          ) {
-          maybeContinueButton = <ContinueButton
-            onClick={this.props.onContinueClick}
-          />
+        ){
+            maybeContinueButton = (
+                <ContinueButton
+                    onClick={this.props.onContinueClick}
+                />
+            )
         }
 
-        return (<div>
-            <IntervalExercise
-              interval={this.props.interval}
-              possibleAnswers={this.props.possibleAnswers}
-              submittedAnswers={this.props.submittedAnswers}
-              onAnswerClick={this.props.onAnswerClick}
-            />
-            {maybeContinueButton}
-        </div>)
+        return (
+            <div>
+                <IntervalExercise
+                    interval={this.props.interval}
+                    possibleAnswers={this.props.possibleAnswers}
+                    submittedAnswers={this.props.submittedAnswers}
+                    onAnswerClick={this.props.onAnswerClick}
+                />
+                {maybeContinueButton}
+            </div>
+        )
     }
 }
 
