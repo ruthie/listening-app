@@ -1,11 +1,22 @@
+.answer-button {
+    border-radius: 1000px; /* any large number of pixels gets the desired effect */
+    font-size: 14pt;
+    border: none;
+    padding: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .green {
-    background-color: green
+    background-color: #60BD48;
+    color: white
 }
 
 .white {
-    background-color: white
+    background-color: #DDDDDD;
+    color: black;
 }
 
 .red {
-    background-color: red
+    background-color: #BC3C3D;
+    color: white;
 }

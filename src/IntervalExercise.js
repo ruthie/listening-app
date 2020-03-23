@@ -7,7 +7,7 @@ import './AnswerButton.css';
 
 function AnswerButton({ text, onClick, value, color }) {
     return (
-        <button value={value} onClick={onClick} className={color}>{text}</button>
+        <button value={value} onClick={onClick} className={`answer-button ${color}`}>{text}</button>
     )
 }
 
