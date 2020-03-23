@@ -1,5 +1,5 @@
 import React from 'react';
-import QuizController  from './QuizController.js'
+import QuizController from './QuizController'
 
 import './App.css';
 

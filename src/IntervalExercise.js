@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Tone from "tone";
-import Teoria from "teoria";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Tone from 'tone';
+import Teoria from 'teoria';
 
 import './AnswerButton.css';
 
@@ -25,12 +25,12 @@ class IntervalExercise extends Component {
 
 
     playInterval() {
-        var synth = new Tone.Synth().toMaster()
-        var bottomNoteName = 'C4'
-        var topNote = Teoria.interval(
+        let synth = new Tone.Synth().toMaster()
+        let bottomNoteName = 'C4'
+        let topNote = Teoria.interval(
             Teoria.note(bottomNoteName), this.props.interval
         )
-        var topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
+        let topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
         synth.triggerAttackRelease(bottomNoteName, '4n')
         synth.triggerAttackRelease(topNoteName, '4n', Tone.now() + Tone.Time('4n'))
@@ -43,9 +43,9 @@ class IntervalExercise extends Component {
             <div>
                 <PlaySoundButton onClick={this.playInterval}/>
                 {possibleAnswers.map(x => {
-                    var intervalName = x.toString()
+                    let intervalName = x.toString()
 
-                    var color = 'white'
+                    let color = 'white'
                     if (submittedAnswers.includes(x.toString())) {
                         color = intervalName === interval.toString() ? 'green' : 'red'
                     }
@@ -63,6 +63,18 @@ class IntervalExercise extends Component {
             </div>
         )
     }
+}
+
+PlaySoundButton.propTypes = {
+    onClick: PropTypes.func,
+}
+
+AnswerButton.propTypes = {
+    key: PropTypes.string,
+    text: PropTypes.string,
+    value: PropTypes.string,
+    color: PropTypes.string,
+    onClick: PropTypes.func,
 }
 
 IntervalExercise.propTypes = {
