@@ -1,7 +1,6 @@
 import React, { Component } from "react";
+import Quiz  from './Quiz.js'
 import Teoria from "teoria";
-
-import IntervalExercise from "./IntervalExercise.js";
 
 const POSSIBLE_INTERVALS = [
     Teoria.interval('m2'),
@@ -23,15 +22,19 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-class IntervalExerciseController extends Component {
+class QuizController extends Component {
     constructor() {
         super()
 
         this.state = {
+            numExercises: 10,
+            currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
             submittedAnswers: []
         }
+
         this.handleAnswerClick = this.handleAnswerClick.bind(this)
+        this.handleContinueClick = this.handleContinueClick.bind(this)
     }
 
     handleAnswerClick(e) {
@@ -40,14 +43,27 @@ class IntervalExerciseController extends Component {
         })
     }
 
+    handleContinueClick(e) {
+        this.setState({
+            submittedAnswers: [],
+            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            currentExercise: this.state.currentExercise + 1
+        })
+    }
+
     render() {
-        return <IntervalExercise
-            interval={this.state.interval}
-            possibleAnswers={POSSIBLE_INTERVALS}
-            submittedAnswers={this.state.submittedAnswers}
-            onAnswerClick={this.handleAnswerClick}
-        />
+        return (
+            <Quiz
+                interval={this.state.interval}
+                possibleAnswers={POSSIBLE_INTERVALS}
+                submittedAnswers={this.state.submittedAnswers}
+                onAnswerClick={this.handleAnswerClick}
+                numExercises={this.state.numExercises}
+                currentExercise={this.state.currentExercise}
+                onContinueClick={this.handleContinueClick}
+            />
+        )
     }
 }
 
-export default IntervalExerciseController
+export default QuizController
