@@ -4,25 +4,19 @@ import PropTypes from "prop-types";
 
 function ContinueButton({ onClick }) {
     return (
-        <button onClick={onClick}> Continue </button>
+        <button onClick={onClick}>Continue</button>
     )
 }
 
 class Quiz extends Component {
     render() {
         var maybeContinueButton;
-        if (
+        const quizCompleted = (
             // we've answered correctly
             this.props.submittedAnswers.includes(this.props.interval.toString())
             // and this is not the last exercise
             && this.props.currentExercise < this.props.numExercises - 1
-        ){
-            maybeContinueButton = (
-                <ContinueButton
-                    onClick={this.props.onContinueClick}
-                />
-            )
-        }
+        )
 
         return (
             <div>
@@ -32,7 +26,7 @@ class Quiz extends Component {
                     submittedAnswers={this.props.submittedAnswers}
                     onAnswerClick={this.props.onAnswerClick}
                 />
-                {maybeContinueButton}
+                {quizCompleted && <ContinueButton onClick={this.props.onContinueClick} />}
             </div>
         )
     }
