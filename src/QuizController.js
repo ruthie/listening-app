@@ -23,44 +23,46 @@ function getRandomInt(max) {
 }
 
 class QuizController extends Component {
-  constructor() {
-      super()
+    constructor() {
+        super()
 
-      this.state = {
-          numExercises: 10,
-          currentExercise: 0,
-          interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
-          submittedAnswers: []
-      }
+        this.state = {
+            numExercises: 10,
+            currentExercise: 0,
+            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            submittedAnswers: []
+        }
 
-      this.handleAnswerClick = this.handleAnswerClick.bind(this)
-      this.handleContinueClick = this.handleContinueClick.bind(this)
-  }
+        this.handleAnswerClick = this.handleAnswerClick.bind(this)
+        this.handleContinueClick = this.handleContinueClick.bind(this)
+    }
 
-  handleAnswerClick(e) {
-      this.setState({
-          submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value])
-      })
-  }
+    handleAnswerClick(e) {
+        this.setState({
+            submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value])
+        })
+    }
 
-  handleContinueClick(e) {
-      this.setState({
-          submittedAnswers: [],
-          interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
-          currentExercise: this.state.currentExercise + 1
-      })
-  }
+    handleContinueClick(e) {
+        this.setState({
+            submittedAnswers: [],
+            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            currentExercise: this.state.currentExercise + 1
+        })
+    }
 
     render() {
-        return <Quiz
-            interval={this.state.interval}
-            possibleAnswers={POSSIBLE_INTERVALS}
-            submittedAnswers={this.state.submittedAnswers}
-            onAnswerClick={this.handleAnswerClick}
-            numExercises={this.state.numExercises}
-            currentExercise={this.state.currentExercise}
-            onContinueClick={this.handleContinueClick}
-        />
+        return (
+            <Quiz
+                interval={this.state.interval}
+                possibleAnswers={POSSIBLE_INTERVALS}
+                submittedAnswers={this.state.submittedAnswers}
+                onAnswerClick={this.handleAnswerClick}
+                numExercises={this.state.numExercises}
+                currentExercise={this.state.currentExercise}
+                onContinueClick={this.handleContinueClick}
+            />
+        )
     }
 }
 
