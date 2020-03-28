@@ -7,13 +7,12 @@ import './AnswerButton.css';
 import './PlayButton.css';
 import { MdVolumeUp } from 'react-icons/md';
 
-function AnswerButton({ text, onClick, value, color, row, column }) {
+function AnswerButton({ text, onClick, value, color, layoutClassName}) {
     return (
         <button
             value={value}
             onClick={onClick}
-            className={`answer-button ${color}`}
-            style={{gridColumn: column, gridRow: row}}
+            className={`answer-button ${color} ${layoutClassName}`}
         >
             {text}
         </button>
@@ -32,58 +31,47 @@ function PlaySoundButton({ onClick }) {
 const intervalDisplayInfo = {
     'm2': {
         friendlyName: 'Minor 2nd',
-        row: 1,
-        column: 2
+        layoutClassName: 'minor2'
     },
     'M2': {
         friendlyName: 'Major 2nd',
-        row: 1,
-        column: 1,
+        layoutClassName: 'major2'
     },
     'm3': {
         friendlyName: 'Minor 3rd',
-        row: 2,
-        column: 2,
+        layoutClassName: 'minor3',
     },
     'M3': {
         friendlyName: 'Major 3rd',
-        row: 2,
-        column: 1
+        layoutClassName: 'major3',
     },
     'P4': {
         friendlyName: 'Perfect 4th',
-        row: 3,
-        column: 1
+        layoutClassName: 'perfect4',
     },
     'd5': {
         friendlyName: 'Diminished 5th',
-        row: 4,
-        column: 2
+        layoutClassName: 'diminished5',
     },
     'P5': {
         friendlyName: 'Perfect 5th',
-        row: 4,
-        column: 1,
-    },
+        layoutClassName: 'perfect5',
+            },
     'm6': {
         friendlyName: 'Minor 6th',
-        row: 5,
-        column: 2
+        layoutClassName: 'minor6',
     },
     'M6': {
         friendlyName: 'Major 6th',
-        row: 5,
-        column: 1,
+        layoutClassName: 'major6',
     },
     'm7': {
         friendlyName: 'Minor 7th',
-        row: 6,
-        column: 2
+        layoutClassName: 'minor7',
     },
     'M7': {
         friendlyName: 'Major 7th',
-        row: 6,
-        column: 1
+        layoutClassName: 'major7',
     }
 }
 
@@ -130,8 +118,7 @@ class IntervalExercise extends Component {
                                 value={intervalName}
                                 color={color}
                                 onClick={onAnswerClick}
-                                row={intervalDisplayInfo[intervalName].row}
-                                column={intervalDisplayInfo[intervalName].column}
+                                layoutClassName={intervalDisplayInfo[intervalName].layoutClassName}
                             />
                         )
                     })}

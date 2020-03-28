@@ -28,3 +28,60 @@
     background-color: #BC3C3D;
     color: white;
 }
+
+/* grid layout styles for specific intervals */
+
+.minor2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.major2 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.minor3 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.major3 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.perfect4 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.diminished5 {
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.perfect5 {
+    grid-row: 4;
+    grid-column: 1;
+}
+
+.minor6 {
+    grid-row: 5;
+    grid-column: 2;
+}
+
+.major6 {
+    grid-row: 5;
+    grid-column: 1;
+}
+
+.minor7 {
+    grid-row: 6;
+    grid-column: 2;
+}
+
+.major7 {
+    grid-row: 6;
+    grid-column: 1;
+}
