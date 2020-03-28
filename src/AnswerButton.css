@@ -1,7 +1,9 @@
 .answer-buttons-container  {
     display: grid;
-    grid-template-columns: 2;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows:  7;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
 }
 
 .answer-button {
@@ -10,11 +12,6 @@
     border: none;
     padding: 10px;
     font-family: 'Quicksand', sans-serif;
-    /* spacing for answer buttons */
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 .green {

@@ -112,7 +112,7 @@ class IntervalExercise extends Component {
         return (
             <div>
                 <PlaySoundButton onClick={this.playInterval}/>
-                <div class="answer-buttons-container">
+                <div className="answer-buttons-container">
                     {possibleAnswers.map(x => {
                         let intervalName = x.toString()
                         var intervalFriendlyName = intervalDisplayInfo[intervalName].friendlyName

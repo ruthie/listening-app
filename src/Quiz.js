@@ -3,6 +3,7 @@ import IntervalExercise  from './IntervalExercise.js'
 import PropTypes from "prop-types";
 
 import './ContinueButton.css';
+import './Quiz.css';
 
 function ContinueButton({ onClick }) {
     return (
@@ -20,7 +21,7 @@ class Quiz extends Component {
         )
 
         return (
-            <div>
+            <div className='quiz'>
                 <IntervalExercise
                     interval={this.props.interval}
                     possibleAnswers={this.props.possibleAnswers}
