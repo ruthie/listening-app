@@ -10,6 +10,11 @@
     border: none;
     padding: 10px;
     font-family: 'Quicksand', sans-serif;
+    /* spacing for answer buttons */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .green {
