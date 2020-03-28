@@ -56,7 +56,7 @@ const intervalDisplayInfo = {
     'P5': {
         friendlyName: 'Perfect 5th',
         layoutClassName: 'perfect5',
-            },
+    },
     'm6': {
         friendlyName: 'Minor 6th',
         layoutClassName: 'minor6',
