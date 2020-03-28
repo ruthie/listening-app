@@ -9,7 +9,7 @@
     /* text */
     color: white;
     font-size: 24pt;
-    font-family: 'Quicksand', sans-serif;
+    font-family: inherit;
     font-weight: bold;
     letter-spacing: .1em;
 
@@ -25,7 +25,7 @@
 
 .instructions-text {
     font-size: 18pt;
-    font-family: 'Quicksand', sans-serif;
+    font-family: inherit;
     font-weight: bold;
     color: #095EB8;
     text-align: left;

@@ -9,7 +9,7 @@
     /* text */
     color: white;
     font-size: 24pt;
-    font-family: 'Quicksand', sans-serif;
+    font-family: inherit;
     font-weight: bold;
     letter-spacing: .1em;
 
