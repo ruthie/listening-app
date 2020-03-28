@@ -1,6 +1,7 @@
 .quiz {
     max-width: 500px;
     padding: 10px;
+    margin: auto;
 }
 
 .quiz button:focus {
