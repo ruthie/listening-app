@@ -10,7 +10,6 @@ function ContinueButton({ onClick }) {
 
 class Quiz extends Component {
     render() {
-        var maybeContinueButton;
         const quizCompleted = (
             // we've answered correctly
             this.props.submittedAnswers.includes(this.props.interval.toString())
