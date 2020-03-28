@@ -5,6 +5,7 @@ import Teoria from "teoria";
 
 import './AnswerButton.css';
 import './PlayButton.css';
+import { MdVolumeUp } from 'react-icons/md';
 
 function AnswerButton({ text, onClick, value, color, row, column }) {
     return (
@@ -21,7 +22,10 @@ function AnswerButton({ text, onClick, value, color, row, column }) {
 
 function PlaySoundButton({ onClick }) {
     return (
-        <button onClick={onClick} className='play-button'> PLAY INTERVAL </button>
+        <button onClick={onClick} className='play-button'>
+            <MdVolumeUp className='play-button-sound-icon'/>
+            PLAY INTERVAL
+        </button>
     )
 }
 
