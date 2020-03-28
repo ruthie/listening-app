@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import IntervalExercise  from './IntervalExercise.js'
 import PropTypes from "prop-types";
 
+import './ContinueButton.css';
+
 function ContinueButton({ onClick }) {
     return (
-        <button onClick={onClick}>Continue</button>
+        <button onClick={onClick} className='continue-button'>CONTINUE</button>
     )
 }
 
