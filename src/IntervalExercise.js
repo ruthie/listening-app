@@ -5,9 +5,16 @@ import Teoria from "teoria";
 
 import './AnswerButton.css';
 
-function AnswerButton({ text, onClick, value, color }) {
+function AnswerButton({ text, onClick, value, color, row, column }) {
     return (
-        <button value={value} onClick={onClick} className={`answer-button ${color}`}>{text}</button>
+        <button
+            value={value}
+            onClick={onClick}
+            className={`answer-button ${color}`}
+            style={{gridColumn: column, gridRow: row}}
+        >
+            {text}
+        </button>
     )
 }
 
@@ -17,18 +24,62 @@ function PlaySoundButton({ onClick }) {
     )
 }
 
-const friendlyIntervalNames = {
-    'm2': 'Minor 2nd',
-    'M2': 'Major 2nd',
-    'm3': 'Minor 3rd',
-    'M3': 'Major 3rd',
-    'P4': 'Perfect 4th',
-    'd5': 'Diminished 5th',
-    'P5': 'Perfect 5th',
-    'm6': 'Minor 6th',
-    'M6': 'Major 6th',
-    'm7': 'Minor 7th',
-    'M7': 'Major 7th'
+const intervalDisplayInfo = {
+    'm2': {
+        friendlyName: 'Minor 2nd',
+        row: 0,
+        column: 1
+    },
+    'M2': {
+        friendlyName: 'Major 2nd',
+        row: 0,
+        column: 0,
+    },
+    'm3': {
+        friendlyName: 'Minor 3rd',
+        row: 1,
+        column: 1,
+    },
+    'M3': {
+        friendlyName: 'Major 3rd',
+        row: 1,
+        column: 0
+    },
+    'P4': {
+        friendlyName: 'Perfect 4th',
+        row: 2,
+        column: 0
+    },
+    'd5': {
+        friendlyName: 'Diminished 5th',
+        row: 3,
+        column: 1
+    },
+    'P5': {
+        friendlyName: 'Perfect 5th',
+        row: 3,
+        column: 0,
+    },
+    'm6': {
+        friendlyName: 'Minor 6th',
+        row: 4,
+        column: 1
+    },
+    'M6': {
+        friendlyName: 'Major 6th',
+        row: 4,
+        column: 0,
+    },
+    'm7': {
+        friendlyName: 'Minor 7th',
+        row: 5,
+        column: 1
+    },
+    'M7': {
+        friendlyName: 'Major 7th',
+        row: 5,
+        column: 0
+    }
 }
 
 class IntervalExercise extends Component {
@@ -56,25 +107,29 @@ class IntervalExercise extends Component {
         return (
             <div>
                 <PlaySoundButton onClick={this.playInterval}/>
-                {possibleAnswers.map(x => {
-                    let intervalName = x.toString()
-                    var intervalFriendlyName = friendlyIntervalNames[intervalName]
+                <div class="answer-buttons-container">
+                    {possibleAnswers.map(x => {
+                        let intervalName = x.toString()
+                        var intervalFriendlyName = intervalDisplayInfo[intervalName].friendlyName
 
-                    var color = 'white'
-                    if (submittedAnswers.includes(x.toString())) {
-                        color = intervalName === interval.toString() ? 'green' : 'red'
-                    }
+                        var color = 'white'
+                        if (submittedAnswers.includes(x.toString())) {
+                            color = intervalName === interval.toString() ? 'green' : 'red'
+                        }
 
-                    return (
-                        <AnswerButton
-                            key={intervalName}
-                            text={intervalFriendlyName}
-                            value={intervalName}
-                            color={color}
-                            onClick={onAnswerClick}
-                        />
-                    )
-                })}
+                        return (
+                            <AnswerButton
+                                key={intervalName}
+                                text={intervalFriendlyName}
+                                value={intervalName}
+                                color={color}
+                                onClick={onAnswerClick}
+                                row={intervalDisplayInfo[intervalName].row}
+                                column={intervalDisplayInfo[intervalName].column}
+                            />
+                        )
+                    })}
+                </div>
             </div>
         )
     }
