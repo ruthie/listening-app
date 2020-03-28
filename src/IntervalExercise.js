@@ -4,6 +4,7 @@ import Tone from "tone";
 import Teoria from "teoria";
 
 import './AnswerButton.css';
+import './PlayButton.css';
 
 function AnswerButton({ text, onClick, value, color, row, column }) {
     return (
@@ -20,7 +21,7 @@ function AnswerButton({ text, onClick, value, color, row, column }) {
 
 function PlaySoundButton({ onClick }) {
     return (
-        <button onClick={onClick}> Play Sound </button>
+        <button onClick={onClick} className='play-button'> PLAY INTERVAL </button>
     )
 }
 

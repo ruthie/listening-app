@@ -1,0 +1,19 @@
+.play-button {
+    width: 100%;
+
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+    background-color: #1C8FF9;
+
+    /* text */
+    color: white;
+    font-size: 24pt;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+
+    /* spacing */
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
