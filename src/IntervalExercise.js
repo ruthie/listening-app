@@ -32,58 +32,58 @@ function PlaySoundButton({ onClick }) {
 const intervalDisplayInfo = {
     'm2': {
         friendlyName: 'Minor 2nd',
-        row: 0,
-        column: 1
+        row: 1,
+        column: 2
     },
     'M2': {
         friendlyName: 'Major 2nd',
-        row: 0,
-        column: 0,
-    },
-    'm3': {
-        friendlyName: 'Minor 3rd',
         row: 1,
         column: 1,
     },
+    'm3': {
+        friendlyName: 'Minor 3rd',
+        row: 2,
+        column: 2,
+    },
     'M3': {
         friendlyName: 'Major 3rd',
-        row: 1,
-        column: 0
+        row: 2,
+        column: 1
     },
     'P4': {
         friendlyName: 'Perfect 4th',
-        row: 2,
-        column: 0
+        row: 3,
+        column: 1
     },
     'd5': {
         friendlyName: 'Diminished 5th',
-        row: 3,
-        column: 1
+        row: 4,
+        column: 2
     },
     'P5': {
         friendlyName: 'Perfect 5th',
-        row: 3,
-        column: 0,
+        row: 4,
+        column: 1,
     },
     'm6': {
         friendlyName: 'Minor 6th',
-        row: 4,
-        column: 1
+        row: 5,
+        column: 2
     },
     'M6': {
         friendlyName: 'Major 6th',
-        row: 4,
-        column: 0,
+        row: 5,
+        column: 1,
     },
     'm7': {
         friendlyName: 'Minor 7th',
-        row: 5,
-        column: 1
+        row: 6,
+        column: 2
     },
     'M7': {
         friendlyName: 'Major 7th',
-        row: 5,
-        column: 0
+        row: 6,
+        column: 1
     }
 }
 
