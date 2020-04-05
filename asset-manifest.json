@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/listening-app/static/css/main.4e4bf4ff.chunk.css",
+    "main.js": "/listening-app/static/js/main.dab9dc92.chunk.js",
+    "main.js.map": "/listening-app/static/js/main.dab9dc92.chunk.js.map",
+    "runtime-main.js": "/listening-app/static/js/runtime-main.d2733520.js",
+    "runtime-main.js.map": "/listening-app/static/js/runtime-main.d2733520.js.map",
+    "static/js/2.a0577491.chunk.js": "/listening-app/static/js/2.a0577491.chunk.js",
+    "static/js/2.a0577491.chunk.js.map": "/listening-app/static/js/2.a0577491.chunk.js.map",
+    "index.html": "/listening-app/index.html",
+    "precache-manifest.ba5ef333a7945cac1b852177237eed80.js": "/listening-app/precache-manifest.ba5ef333a7945cac1b852177237eed80.js",
+    "service-worker.js": "/listening-app/service-worker.js",
+    "static/css/main.4e4bf4ff.chunk.css.map": "/listening-app/static/css/main.4e4bf4ff.chunk.css.map",
+    "static/js/2.a0577491.chunk.js.LICENSE.txt": "/listening-app/static/js/2.a0577491.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d2733520.js",
+    "static/js/2.a0577491.chunk.js",
+    "static/css/main.4e4bf4ff.chunk.css",
+    "static/js/main.dab9dc92.chunk.js"
+  ]
+}
