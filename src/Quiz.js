@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import IntervalExercise  from './IntervalExercise.js'
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
+import IntervalExercise from './IntervalExercise.js'
 import './ContinueButton.css';
 import './Quiz.css';
 
 function ContinueButton({ onClick }) {
     return (
-        <button onClick={onClick} className='continue-button'>CONTINUE</button>
+        <button onClick={onClick} className="continue-button">CONTINUE</button>
     )
 }
 
@@ -21,7 +21,7 @@ class Quiz extends Component {
         )
 
         return (
-            <div className='quiz'>
+            <div className="quiz">
                 <IntervalExercise
                     interval={this.props.interval}
                     possibleAnswers={this.props.possibleAnswers}
@@ -34,13 +34,18 @@ class Quiz extends Component {
     }
 }
 
+ContinueButton.propTypes = {
+    onClick: PropTypes.func,
+}
+
 Quiz.propTypes = {
     interval: PropTypes.object, // Teoria interval
     possibleAnswers: PropTypes.arrayOf(PropTypes.object), // Array of Teoria intervals
-    submittedAnswers: PropTypes.arrayOf(PropTypes.string), // Array of string ids  of Teoria intervals
+    submittedAnswers: PropTypes.arrayOf(PropTypes.string), // ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
     numExercises: PropTypes.number,
     currentExercise: PropTypes.number,
+    onContinueClick: PropTypes.func,
 }
 
 export default Quiz

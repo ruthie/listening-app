@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import Quiz  from './Quiz.js'
-import Teoria from "teoria";
+import React, { Component } from 'react';
+import Teoria from 'teoria';
+
+import Quiz from './Quiz.js'
 
 const POSSIBLE_INTERVALS = [
     Teoria.interval('m2'),
@@ -19,7 +20,7 @@ const POSSIBLE_INTERVALS = [
 ]
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+    return Math.floor(Math.random() * Math.floor(max));
 }
 
 class QuizController extends Component {
@@ -30,7 +31,7 @@ class QuizController extends Component {
             numExercises: 10,
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
-            submittedAnswers: []
+            submittedAnswers: [],
         }
 
         this.handleAnswerClick = this.handleAnswerClick.bind(this)
@@ -39,15 +40,15 @@ class QuizController extends Component {
 
     handleAnswerClick(e) {
         this.setState({
-            submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value])
+            submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value]),
         })
     }
 
-    handleContinueClick(e) {
+    handleContinueClick() {
         this.setState({
             submittedAnswers: [],
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
-            currentExercise: this.state.currentExercise + 1
+            currentExercise: this.state.currentExercise + 1,
         })
     }
 
