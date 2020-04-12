@@ -9,7 +9,7 @@ import './PlayButton.css';
 import './IntervalExercise.css';
 
 
-const intervalDisplayInfo = {
+const INTERVAL_DISPLAY_INFO = {
     m2: {
         friendlyName: 'Minor 2nd',
         layoutClassName: 'minor2',
@@ -85,7 +85,7 @@ class IntervalExercise extends Component {
                 <div className="answer-buttons-container">
                     {possibleAnswers.map(x => {
                         const intervalName = x.toString()
-                        const intervalFriendlyName = intervalDisplayInfo[intervalName].friendlyName
+                        const intervalFriendlyName = INTERVAL_DISPLAY_INFO[intervalName].friendlyName
 
                         let color = 'white'
                         if (submittedAnswers.includes(x.toString())) {
@@ -99,7 +99,9 @@ class IntervalExercise extends Component {
                                 value={intervalName}
                                 color={color}
                                 onClick={onAnswerClick}
-                                layoutClassName={intervalDisplayInfo[intervalName].layoutClassName}
+                                layoutClassName={
+                                    INTERVAL_DISPLAY_INFO[intervalName].layoutClassName
+                                }
                             />
                         )
                     })}
