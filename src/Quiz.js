@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import IntervalExercise from './IntervalExercise.js'
-import './ContinueButton.css';
+import ContinueButton from './ContinueButton.js'
 import './Quiz.css';
 
-function ContinueButton({ onClick }) {
-    return (
-        <button onClick={onClick} className="continue-button">CONTINUE</button>
-    )
-}
 
 class Quiz extends Component {
     render() {
@@ -34,9 +29,6 @@ class Quiz extends Component {
     }
 }
 
-ContinueButton.propTypes = {
-    onClick: PropTypes.func,
-}
 
 Quiz.propTypes = {
     interval: PropTypes.object, // Teoria interval
