@@ -6,6 +6,7 @@ import Teoria from 'teoria';
 import AnswerButton from './AnswerButton.js';
 import PlayButton from './PlayButton.js';
 import './PlayButton.css';
+import './IntervalExercise.css';
 
 
 const intervalDisplayInfo = {
