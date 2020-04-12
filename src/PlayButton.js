@@ -8,7 +8,7 @@ function PlayButton({ onClick }) {
     return (
         <button onClick={onClick} className="play-button">
             <MdVolumeUp className="play-button-sound-icon" />
-            PLAY INTERVAL
+            Play Interval
         </button>
     )
 }

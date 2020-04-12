@@ -5,7 +5,7 @@ import './ContinueButton.css';
 
 function ContinueButton({ onClick }) {
     return (
-        <button onClick={onClick} className="continue-button">CONTINUE</button>
+        <button onClick={onClick} className="continue-button">Continue</button>
     )
 }
 
