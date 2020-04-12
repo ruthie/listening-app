@@ -2,22 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
-
-import './AnswerButton.css';
-import './PlayButton.css';
 import { MdVolumeUp } from 'react-icons/md';
 
-function AnswerButton({ text, onClick, value, color, layoutClassName }) {
-    return (
-        <button
-            value={value}
-            onClick={onClick}
-            className={`answer-button ${color} ${layoutClassName}`}
-        >
-            {text}
-        </button>
-    )
-}
+import AnswerButton from './AnswerButton.js';
+import './PlayButton.css';
+
 
 function PlaySoundButton({ onClick }) {
     return (
@@ -132,13 +121,6 @@ PlaySoundButton.propTypes = {
     onClick: PropTypes.func,
 }
 
-AnswerButton.propTypes = {
-    text: PropTypes.string,
-    value: PropTypes.string,
-    color: PropTypes.string,
-    onClick: PropTypes.func,
-    layoutClassName: PropTypes.string,
-}
 
 IntervalExercise.propTypes = {
     interval: PropTypes.object, // Teoria interval
