@@ -2,20 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
-import { MdVolumeUp } from 'react-icons/md';
 
 import AnswerButton from './AnswerButton.js';
+import PlayButton from './PlayButton.js';
 import './PlayButton.css';
 
-
-function PlaySoundButton({ onClick }) {
-    return (
-        <button onClick={onClick} className="play-button">
-            <MdVolumeUp className="play-button-sound-icon" />
-            PLAY INTERVAL
-        </button>
-    )
-}
 
 const intervalDisplayInfo = {
     m2: {
@@ -88,7 +79,7 @@ class IntervalExercise extends Component {
 
         return (
             <div>
-                <PlaySoundButton onClick={this.playInterval} />
+                <PlayButton onClick={this.playInterval} />
                 <p className="instructions-text">Identify the interval</p>
                 <div className="answer-buttons-container">
                     {possibleAnswers.map(x => {
@@ -115,10 +106,6 @@ class IntervalExercise extends Component {
             </div>
         )
     }
-}
-
-PlaySoundButton.propTypes = {
-    onClick: PropTypes.func,
 }
 
 
