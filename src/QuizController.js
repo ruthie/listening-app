@@ -36,6 +36,7 @@ class QuizController extends Component {
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
             submittedAnswers: [],
             finished: false,
+            numFirstTry: 0,
         }
 
         this.handleAnswerClick = this.handleAnswerClick.bind(this)
@@ -45,8 +46,21 @@ class QuizController extends Component {
     }
 
     handleAnswerClick(e) {
+        const submittedInterval = e.currentTarget.value
+
+        if (
+            // this is the first guess for this question
+            this.state.submittedAnswers.length === 0
+            // and it was correct
+            && submittedInterval === this.state.interval.toString()
+        ) {
+            this.setState({
+                numFirstTry: this.state.numFirstTry + 1,
+            })
+        }
+
         this.setState({
-            submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value]),
+            submittedAnswers: this.state.submittedAnswers.concat([submittedInterval]),
         })
     }
 
@@ -71,6 +85,7 @@ class QuizController extends Component {
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
             submittedAnswers: [],
             finished: false,
+            numFirstTry: 0,
         })
     }
 
@@ -81,7 +96,7 @@ class QuizController extends Component {
                     <QuizCompleted
                         onAgainClick={this.handleAgainClick}
                         numExercises={this.state.numExercises}
-                        numFirstTry={1}
+                        numFirstTry={this.state.numFirstTry}
                     />
                 )
                 : (
