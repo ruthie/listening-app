@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Teoria from 'teoria';
 
 import Quiz from './Quiz.js'
+import QuizCompleted from './QuizCompleted.js'
 
 const POSSIBLE_INTERVALS = [
     Teoria.interval('m2'),
@@ -28,14 +29,16 @@ class QuizController extends Component {
         super()
 
         this.state = {
-            numExercises: 10,
+            numExercises: 2,
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
             submittedAnswers: [],
+            finished: false,
         }
 
         this.handleAnswerClick = this.handleAnswerClick.bind(this)
         this.handleContinueClick = this.handleContinueClick.bind(this)
+        this.handleFinishClick = this.handleFinishClick.bind(this)
     }
 
     handleAnswerClick(e) {
@@ -52,18 +55,31 @@ class QuizController extends Component {
         })
     }
 
+    handleFinishClick() {
+        this.setState({
+            finished: true,
+        })
+    }
+
     render() {
-        return (
-            <Quiz
-                interval={this.state.interval}
-                possibleAnswers={POSSIBLE_INTERVALS}
-                submittedAnswers={this.state.submittedAnswers}
-                onAnswerClick={this.handleAnswerClick}
-                numExercises={this.state.numExercises}
-                currentExercise={this.state.currentExercise}
-                onContinueClick={this.handleContinueClick}
-            />
+        const renderedComponent = (
+            this.state.finished
+                ? <QuizCompleted />
+                : (
+                    <Quiz
+                        interval={this.state.interval}
+                        possibleAnswers={POSSIBLE_INTERVALS}
+                        submittedAnswers={this.state.submittedAnswers}
+                        onAnswerClick={this.handleAnswerClick}
+                        numExercises={this.state.numExercises}
+                        currentExercise={this.state.currentExercise}
+                        onContinueClick={this.handleContinueClick}
+                        onFinishClick={this.handleFinishClick}
+                    />
+                )
         )
+
+        return renderedComponent
     }
 }
 

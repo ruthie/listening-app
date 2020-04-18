@@ -21,7 +21,7 @@ class Quiz extends Component {
 
         const button = (
             isLastExercise
-                ? <FinishButton onClick={null} />
+                ? <FinishButton onClick={this.props.onFinishClick} />
                 : <ContinueButton onClick={this.props.onContinueClick} />
         )
 
@@ -48,6 +48,7 @@ Quiz.propTypes = {
     numExercises: PropTypes.number,
     currentExercise: PropTypes.number,
     onContinueClick: PropTypes.func,
+    onFinishClick: PropTypes.func,
 }
 
 export default Quiz
