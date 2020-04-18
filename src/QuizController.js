@@ -24,12 +24,14 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
+const NUM_EXERCISES = 2;
+
 class QuizController extends Component {
     constructor() {
         super()
 
         this.state = {
-            numExercises: 2,
+            numExercises: NUM_EXERCISES,
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
             submittedAnswers: [],
@@ -39,6 +41,7 @@ class QuizController extends Component {
         this.handleAnswerClick = this.handleAnswerClick.bind(this)
         this.handleContinueClick = this.handleContinueClick.bind(this)
         this.handleFinishClick = this.handleFinishClick.bind(this)
+        this.handleAgainClick = this.handleAgainClick.bind(this)
     }
 
     handleAnswerClick(e) {
@@ -61,10 +64,24 @@ class QuizController extends Component {
         })
     }
 
+    handleAgainClick() {
+        this.setState({
+            numExercises: NUM_EXERCISES,
+            currentExercise: 0,
+            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            submittedAnswers: [],
+            finished: false,
+        })
+    }
+
     render() {
         const renderedComponent = (
             this.state.finished
-                ? <QuizCompleted />
+                ? (
+                    <QuizCompleted
+                        onAgainClick={this.handleAgainClick}
+                    />
+                )
                 : (
                     <Quiz
                         interval={this.state.interval}
