@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import AgainButton from './AgainButton.js'
+import Button from './Button.js'
 
 class QuizCompleted extends Component {
     render() {
@@ -11,7 +11,11 @@ class QuizCompleted extends Component {
                 <p>
                     {message}
                 </p>
-                <AgainButton onClick={this.props.onAgainClick} />
+                <Button
+                    modifierClassName="again-button"
+                    text="Try Again"
+                    onClick={this.props.onAgainClick}
+                />
             </div>
         )
     }

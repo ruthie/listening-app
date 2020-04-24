@@ -1,10 +1,9 @@
-.again-button {
+.button {
     width: 100%;
 
     border-radius: 20px;
     border: none;
     padding: 10px;
-    background-color: #60BD48;
 
     /* text */
     color: white;
