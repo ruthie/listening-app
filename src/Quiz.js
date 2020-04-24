@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import IntervalExercise from './IntervalExercise.js'
-import ContinueButton from './ContinueButton.js'
-import FinishButton from './FinishButton.js'
+import Button from './Button.js'
 import './Quiz.css';
 
 
@@ -21,8 +20,20 @@ class Quiz extends Component {
 
         const button = (
             isLastExercise
-                ? <FinishButton onClick={this.props.onFinishClick} />
-                : <ContinueButton onClick={this.props.onContinueClick} />
+                ? (
+                    <Button
+                        text="Finish"
+                        onClick={this.props.onFinishClick}
+                        modifierClassName="finish-button"
+                    />
+                )
+                : (
+                    <Button
+                        text="Continue"
+                        onClick={this.props.onContinueClick}
+                        modifierClassName="continue-button"
+                    />
+                )
         )
 
         return (
