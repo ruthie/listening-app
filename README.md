@@ -1,4 +1,4 @@
-# Listening App
+# 👂 Listening App 👂
 
 This app provides basic ear-based music theory exercises.
 
