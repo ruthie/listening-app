@@ -24,7 +24,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-const NUM_EXERCISES = 2;
+const NUM_EXERCISES = 10;
 
 class QuizController extends Component {
     constructor() {
