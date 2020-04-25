@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Teoria from 'teoria';
 
+import Home from './Home.js'
 import Quiz from './Quiz.js'
 import QuizCompleted from './QuizCompleted.js'
 
@@ -24,13 +25,14 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-const NUM_EXERCISES = 10;
+const NUM_EXERCISES = 2;
 
 class QuizController extends Component {
     constructor() {
         super()
 
         this.state = {
+            onStartPage: true,
             numExercises: NUM_EXERCISES,
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
@@ -43,6 +45,8 @@ class QuizController extends Component {
         this.handleContinueClick = this.handleContinueClick.bind(this)
         this.handleFinishClick = this.handleFinishClick.bind(this)
         this.handleAgainClick = this.handleAgainClick.bind(this)
+        this.handleStartQuizClick = this.handleStartQuizClick.bind(this)
+        this.resetQuiz = this.resetQuiz.bind(this)
     }
 
     handleAnswerClick(e) {
@@ -78,8 +82,9 @@ class QuizController extends Component {
         })
     }
 
-    handleAgainClick() {
+    resetQuiz() {
         this.setState({
+            onStartPage: false,
             numExercises: NUM_EXERCISES,
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
@@ -89,27 +94,43 @@ class QuizController extends Component {
         })
     }
 
+    handleAgainClick() {
+        this.resetQuiz()
+    }
+
+    handleStartQuizClick() {
+        this.resetQuiz()
+    }
+
     render() {
         const renderedComponent = (
-            this.state.finished
+            this.state.onStartPage
                 ? (
-                    <QuizCompleted
-                        onAgainClick={this.handleAgainClick}
-                        numExercises={this.state.numExercises}
-                        numFirstTry={this.state.numFirstTry}
+                    <Home
+                        onStartQuizClick={this.handleStartQuizClick}
                     />
                 )
                 : (
-                    <Quiz
-                        interval={this.state.interval}
-                        possibleAnswers={POSSIBLE_INTERVALS}
-                        submittedAnswers={this.state.submittedAnswers}
-                        onAnswerClick={this.handleAnswerClick}
-                        numExercises={this.state.numExercises}
-                        currentExercise={this.state.currentExercise}
-                        onContinueClick={this.handleContinueClick}
-                        onFinishClick={this.handleFinishClick}
-                    />
+                    this.state.finished
+                        ? (
+                            <QuizCompleted
+                                onAgainClick={this.handleAgainClick}
+                                numExercises={this.state.numExercises}
+                                numFirstTry={this.state.numFirstTry}
+                            />
+                        )
+                        : (
+                            <Quiz
+                                interval={this.state.interval}
+                                possibleAnswers={POSSIBLE_INTERVALS}
+                                submittedAnswers={this.state.submittedAnswers}
+                                onAnswerClick={this.handleAnswerClick}
+                                numExercises={this.state.numExercises}
+                                currentExercise={this.state.currentExercise}
+                                onContinueClick={this.handleContinueClick}
+                                onFinishClick={this.handleFinishClick}
+                            />
+                        )
                 )
         )
 

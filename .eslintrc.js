@@ -10,6 +10,7 @@ module.exports = {
         "semi": "off",
         "react/destructuring-assignment": "off",
         "object-curly-newline": "off",
+        "no-nested-ternary": "off",
         "react/button-has-type": "off",
         "react/require-default-props": "off",
         "react/forbid-prop-types": "off",
