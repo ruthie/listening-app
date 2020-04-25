@@ -46,6 +46,7 @@ class QuizController extends Component {
         this.handleFinishClick = this.handleFinishClick.bind(this)
         this.handleAgainClick = this.handleAgainClick.bind(this)
         this.handleStartQuizClick = this.handleStartQuizClick.bind(this)
+        this.handleHomeClick = this.handleHomeClick.bind(this)
         this.resetQuiz = this.resetQuiz.bind(this)
     }
 
@@ -102,6 +103,12 @@ class QuizController extends Component {
         this.resetQuiz()
     }
 
+    handleHomeClick() {
+        this.setState({
+            onStartPage: true,
+        })
+    }
+
     render() {
         const renderedComponent = (
             this.state.onStartPage
@@ -115,6 +122,7 @@ class QuizController extends Component {
                         ? (
                             <QuizCompleted
                                 onAgainClick={this.handleAgainClick}
+                                onHomeClick={this.handleHomeClick}
                                 numExercises={this.state.numExercises}
                                 numFirstTry={this.state.numFirstTry}
                             />

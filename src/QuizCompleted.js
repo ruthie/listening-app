@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from './Button.js'
+import './QuizCompleted.css'
 
 class QuizCompleted extends Component {
     render() {
@@ -16,6 +17,11 @@ class QuizCompleted extends Component {
                     text="Try Again"
                     onClick={this.props.onAgainClick}
                 />
+                <Button
+                    modifierClassName="home-button"
+                    text="Homepage"
+                    onClick={this.props.onHomeClick}
+                />
             </div>
         )
     }
@@ -23,6 +29,7 @@ class QuizCompleted extends Component {
 
 QuizCompleted.propTypes = {
     onAgainClick: PropTypes.func,
+    onHomeClick: PropTypes.func,
     numFirstTry: PropTypes.number,
     numExercises: PropTypes.number,
 }
