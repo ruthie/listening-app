@@ -18,24 +18,6 @@ class Quiz extends Component {
             this.props.currentExercise === this.props.numExercises - 1
         )
 
-        const button = (
-            isLastExercise
-                ? (
-                    <Button
-                        text="Finish"
-                        onClick={this.props.onFinishClick}
-                        className="finish-button"
-                    />
-                )
-                : (
-                    <Button
-                        text="Continue"
-                        onClick={this.props.onContinueClick}
-                        className="continue-button"
-                    />
-                )
-        )
-
         return (
             <div className="quiz">
                 <IntervalExercise
@@ -44,7 +26,20 @@ class Quiz extends Component {
                     submittedAnswers={this.props.submittedAnswers}
                     onAnswerClick={this.props.onAnswerClick}
                 />
-                {questionCompleted && button}
+                {questionCompleted && (
+                    isLastExercise ? (
+                        <Button
+                            text="Finish"
+                            onClick={this.props.onFinishClick}
+                            className="finish-button"
+                        />
+                    ) : (
+                        <Button
+                            text="Continue"
+                            onClick={this.props.onContinueClick}
+                            className="continue-button"
+                        />
+                    ))}
             </div>
         )
     }
