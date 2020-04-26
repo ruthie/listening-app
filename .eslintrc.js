@@ -16,5 +16,6 @@ module.exports = {
         "react/jsx-filename-extension": "off",
         "react/prefer-stateless-function": "off",
         "react/no-access-state-in-setstate": "off",
+        "react/jsx-props-no-spreading": "off",
     },
 }

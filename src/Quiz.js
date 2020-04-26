@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import IntervalExercise from './IntervalExercise.js'
-import ContinueButton from './ContinueButton.js'
+import Button from './Button.js'
 import './Quiz.css';
 
 
 class Quiz extends Component {
     render() {
-        const quizCompleted = (
+        const questionCompleted = (
             // we've answered correctly
             this.props.submittedAnswers.includes(this.props.interval.toString())
+
+        )
+        const isLastExercise = (
             // and this is not the last exercise
-            && this.props.currentExercise < this.props.numExercises - 1
+            this.props.currentExercise === this.props.numExercises - 1
         )
 
         return (
@@ -23,7 +26,22 @@ class Quiz extends Component {
                     submittedAnswers={this.props.submittedAnswers}
                     onAnswerClick={this.props.onAnswerClick}
                 />
-                {quizCompleted && <ContinueButton onClick={this.props.onContinueClick} />}
+                {questionCompleted && (
+                    isLastExercise ? (
+                        <Button
+                            onClick={this.props.onFinishClick}
+                            className="finish-button"
+                        >
+                            Finish
+                        </Button>
+                    ) : (
+                        <Button
+                            onClick={this.props.onContinueClick}
+                            className="continue-button"
+                        >
+                            Continue
+                        </Button>
+                    ))}
             </div>
         )
     }
@@ -38,6 +56,7 @@ Quiz.propTypes = {
     numExercises: PropTypes.number,
     currentExercise: PropTypes.number,
     onContinueClick: PropTypes.func,
+    onFinishClick: PropTypes.func,
 }
 
 export default Quiz

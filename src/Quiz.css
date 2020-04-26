@@ -1,10 +1,11 @@
-.quiz {
-    max-width: 500px;
-    padding: 10px;
-    margin: auto;
-    font-family: 'Quicksand', sans-serif;
+.again-button {
+    background-color: #60BD48;
 }
 
-.quiz button:focus {
-  outline: none;
+.continue-button {
+    background-color: #60BD48;
+}
+
+.finish-button {
+    background-color: #016e2e;
 }

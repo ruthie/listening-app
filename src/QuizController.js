@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Teoria from 'teoria';
 
 import Quiz from './Quiz.js'
+import QuizCompleted from './QuizCompleted.js'
 
 const POSSIBLE_INTERVALS = [
     Teoria.interval('m2'),
@@ -23,24 +24,43 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
+const NUM_EXERCISES = 10;
+
 class QuizController extends Component {
     constructor() {
         super()
 
         this.state = {
-            numExercises: 10,
+            numExercises: NUM_EXERCISES,
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
             submittedAnswers: [],
+            finished: false,
+            numFirstTry: 0,
         }
 
         this.handleAnswerClick = this.handleAnswerClick.bind(this)
         this.handleContinueClick = this.handleContinueClick.bind(this)
+        this.handleFinishClick = this.handleFinishClick.bind(this)
+        this.handleAgainClick = this.handleAgainClick.bind(this)
     }
 
     handleAnswerClick(e) {
+        const submittedInterval = e.currentTarget.value
+
+        if (
+            // this is the first guess for this question
+            this.state.submittedAnswers.length === 0
+            // and it was correct
+            && submittedInterval === this.state.interval.toString()
+        ) {
+            this.setState({
+                numFirstTry: this.state.numFirstTry + 1,
+            })
+        }
+
         this.setState({
-            submittedAnswers: this.state.submittedAnswers.concat([e.currentTarget.value]),
+            submittedAnswers: this.state.submittedAnswers.concat([submittedInterval]),
         })
     }
 
@@ -52,18 +72,48 @@ class QuizController extends Component {
         })
     }
 
+    handleFinishClick() {
+        this.setState({
+            finished: true,
+        })
+    }
+
+    handleAgainClick() {
+        this.setState({
+            numExercises: NUM_EXERCISES,
+            currentExercise: 0,
+            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            submittedAnswers: [],
+            finished: false,
+            numFirstTry: 0,
+        })
+    }
+
     render() {
-        return (
-            <Quiz
-                interval={this.state.interval}
-                possibleAnswers={POSSIBLE_INTERVALS}
-                submittedAnswers={this.state.submittedAnswers}
-                onAnswerClick={this.handleAnswerClick}
-                numExercises={this.state.numExercises}
-                currentExercise={this.state.currentExercise}
-                onContinueClick={this.handleContinueClick}
-            />
+        const renderedComponent = (
+            this.state.finished
+                ? (
+                    <QuizCompleted
+                        onAgainClick={this.handleAgainClick}
+                        numExercises={this.state.numExercises}
+                        numFirstTry={this.state.numFirstTry}
+                    />
+                )
+                : (
+                    <Quiz
+                        interval={this.state.interval}
+                        possibleAnswers={POSSIBLE_INTERVALS}
+                        submittedAnswers={this.state.submittedAnswers}
+                        onAnswerClick={this.handleAnswerClick}
+                        numExercises={this.state.numExercises}
+                        currentExercise={this.state.currentExercise}
+                        onContinueClick={this.handleContinueClick}
+                        onFinishClick={this.handleFinishClick}
+                    />
+                )
         )
+
+        return renderedComponent
     }
 }
 
