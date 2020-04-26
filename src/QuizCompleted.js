@@ -12,7 +12,7 @@ class QuizCompleted extends Component {
                     {message}
                 </p>
                 <Button
-                    modifierClassName="again-button"
+                    className="again-button"
                     text="Try Again"
                     onClick={this.props.onAgainClick}
                 />

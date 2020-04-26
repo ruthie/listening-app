@@ -24,14 +24,14 @@ class Quiz extends Component {
                     <Button
                         text="Finish"
                         onClick={this.props.onFinishClick}
-                        modifierClassName="finish-button"
+                        className="finish-button"
                     />
                 )
                 : (
                     <Button
                         text="Continue"
                         onClick={this.props.onContinueClick}
-                        modifierClassName="continue-button"
+                        className="continue-button"
                     />
                 )
         )

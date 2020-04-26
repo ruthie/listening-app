@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import './Button.css';
 
-function Button(props) {
+function Button({ className, text, ...props }) {
     return (
-        <button className={`button ${props.modifierClassName}`} {...props}>
-            {props.text}
+        <button className={`button ${className}`} {...props}>
+            {text}
         </button>
     )
 }
 
 Button.propTypes = {
-    modifierClassName: PropTypes.string,
+    className: PropTypes.string,
     onClick: PropTypes.func,
     text: PropTypes.string,
 }
