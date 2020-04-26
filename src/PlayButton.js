@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MdVolumeUp } from 'react-icons/md';
+import Button from './Button.js'
 
 import './PlayButton.css';
 
 function PlayButton({ onClick }) {
     return (
-        <button onClick={onClick} className="play-button">
-            <MdVolumeUp className="play-button-sound-icon" />
-            Play Interval
-        </button>
+        <Button
+            onClick={onClick}
+            className="play-button"
+        >
+            <div>
+                <MdVolumeUp className="play-button-sound-icon" />
+                Play Interval
+            </div>
+        </Button>
     )
 }
 

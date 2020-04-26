@@ -29,16 +29,18 @@ class Quiz extends Component {
                 {questionCompleted && (
                     isLastExercise ? (
                         <Button
-                            text="Finish"
                             onClick={this.props.onFinishClick}
                             className="finish-button"
-                        />
+                        >
+                            Finish
+                        </Button>
                     ) : (
                         <Button
-                            text="Continue"
                             onClick={this.props.onContinueClick}
                             className="continue-button"
-                        />
+                        >
+                            Continue
+                        </Button>
                     ))}
             </div>
         )

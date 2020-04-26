@@ -13,9 +13,10 @@ class QuizCompleted extends Component {
                 </p>
                 <Button
                     className="again-button"
-                    text="Try Again"
                     onClick={this.props.onAgainClick}
-                />
+                >
+                    Try again
+                </Button>
             </div>
         )
     }
