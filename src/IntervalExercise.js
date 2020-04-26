@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
+import { MdVolumeUp } from 'react-icons/md';
+
 import AnswerButton from './AnswerButton.js';
-import PlayButton from './PlayButton.js';
-import './PlayButton.css';
+import Button from './Button.js';
 import './IntervalExercise.css';
 
 
@@ -80,7 +81,15 @@ class IntervalExercise extends Component {
 
         return (
             <div>
-                <PlayButton onClick={this.playInterval} />
+                <Button
+                    onClick={this.playInterval}
+                    className="play-button"
+                >
+                    <div>
+                        <MdVolumeUp className="play-button-sound-icon" />
+                        Play Interval
+                    </div>
+                </Button>
                 <p className="instructions-text">Identify the interval</p>
                 <div className="answer-buttons-container">
                     {possibleAnswers.map(x => {
