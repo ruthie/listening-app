@@ -19,11 +19,13 @@ class QuizCompleted extends Component {
                 >
                     Try again
                 </Button>
-                <Button
-                    className="home-button"
+
+                <Link
+                    to="/"
+                    className="link-button home-button"
                 >
-                    <Link to="/">Home</Link>
-                </Button>
+                    Home
+                </Link>
             </div>
         )
     }

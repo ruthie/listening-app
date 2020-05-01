@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from './Button.js'
 import './Home.css'
+import './LinkButton.css'
 
 class Home extends Component {
     render() {
@@ -11,12 +11,13 @@ class Home extends Component {
                 <p>
                     Welcome to the listening app
                 </p>
-                <Button
-                    className="start-quiz-button"
-                    onClick={null}
+
+                <Link
+                    to="/quiz"
+                    className="link-button start-quiz-button"
                 >
-                    <Link to="/quiz">Quiz</Link>
-                </Button>
+                    Quiz
+                </Link>
             </div>
         )
     }
