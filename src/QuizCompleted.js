@@ -33,7 +33,6 @@ class QuizCompleted extends Component {
 
 QuizCompleted.propTypes = {
     onAgainClick: PropTypes.func,
-    onHomeClick: PropTypes.func,
     numFirstTry: PropTypes.number,
     numExercises: PropTypes.number,
 }

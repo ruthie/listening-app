@@ -45,7 +45,6 @@ class QuizController extends Component {
                 ? (
                     <QuizCompleted
                         onAgainClick={this.handleAgainClick}
-                        onHomeClick={this.handleHomeClick}
                         numExercises={this.state.numExercises}
                         numFirstTry={this.state.numFirstTry}
                     />
