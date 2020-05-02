@@ -10,6 +10,7 @@ module.exports = {
         "semi": "off",
         "react/destructuring-assignment": "off",
         "object-curly-newline": "off",
+        "no-nested-ternary": "off",
         "react/button-has-type": "off",
         "react/require-default-props": "off",
         "react/forbid-prop-types": "off",
@@ -17,5 +18,6 @@ module.exports = {
         "react/prefer-stateless-function": "off",
         "react/no-access-state-in-setstate": "off",
         "react/jsx-props-no-spreading": "off",
+        "object-shorthand": "off"
     },
 }
