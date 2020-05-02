@@ -33,7 +33,6 @@ class Quiz extends Component {
         this.state = {
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
-            possibleAnswers: POSSIBLE_INTERVALS,
             submittedAnswers: [],
             numFirstTry: 0,
         }
@@ -77,7 +76,6 @@ class Quiz extends Component {
         this.setState({
             currentExercise: 0,
             interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
-            possibleAnswers: POSSIBLE_INTERVALS,
             submittedAnswers: [],
             numFirstTry: 0,
         })
@@ -98,7 +96,6 @@ class Quiz extends Component {
             <div className="quiz">
                 <IntervalExercise
                     interval={this.state.interval}
-                    possibleAnswers={this.state.possibleAnswers}
                     submittedAnswers={this.state.submittedAnswers}
                     onAnswerClick={this.handleAnswerClick}
                 />

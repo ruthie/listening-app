@@ -77,7 +77,7 @@ class IntervalExercise extends Component {
     }
 
     render() {
-        const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
+        const { interval, submittedAnswers, onAnswerClick } = this.props;
 
         return (
             <div>
@@ -92,12 +92,11 @@ class IntervalExercise extends Component {
                 </Button>
                 <p className="instructions-text">Identify the interval</p>
                 <div className="answer-buttons-container">
-                    {possibleAnswers.map(x => {
-                        const intervalName = x.toString()
-                        const intervalFriendlyName = INTERVAL_DISPLAY_INFO[intervalName].friendlyName
+                    {Object.entries(INTERVAL_DISPLAY_INFO).map(([intervalName, displayInfo]) => {
+                        const intervalFriendlyName = displayInfo.friendlyName
 
                         let color = 'white'
-                        if (submittedAnswers.includes(x.toString())) {
+                        if (submittedAnswers.includes(intervalName)) {
                             color = intervalName === interval.toString() ? 'green' : 'red'
                         }
 
@@ -123,7 +122,6 @@ class IntervalExercise extends Component {
 
 IntervalExercise.propTypes = {
     interval: PropTypes.object, // Teoria interval
-    possibleAnswers: PropTypes.arrayOf(PropTypes.object), // Array of Teoria intervals
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }
