@@ -1,38 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Teoria from 'teoria';
 
 import IntervalExercise from './IntervalExercise.js'
 import Button from './Button.js'
 import './Quiz.css';
 
-const POSSIBLE_INTERVALS = [
-    Teoria.interval('m2'),
-    Teoria.interval('M2'),
-    Teoria.interval('m3'),
-    Teoria.interval('M3'),
-    Teoria.interval('P4'),
-    Teoria.interval('d5'),
-    Teoria.interval('P5'),
-    Teoria.interval('m6'),
-    Teoria.interval('M6'),
-    Teoria.interval('m7'),
-    Teoria.interval('M7'),
-    // TODO: include octave
-
-]
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
 
 class Quiz extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             currentExercise: 0,
-            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            interval: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         }
@@ -64,7 +44,7 @@ class Quiz extends Component {
     handleContinueClick() {
         this.setState({
             submittedAnswers: [],
-            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            interval: this.props.questionGenerator(),
             currentExercise: this.state.currentExercise + 1,
         })
     }
@@ -75,7 +55,7 @@ class Quiz extends Component {
         // clear quiz state for next time
         this.setState({
             currentExercise: 0,
-            interval: POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)],
+            interval: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         })
@@ -124,6 +104,7 @@ class Quiz extends Component {
 Quiz.propTypes = {
     numExercises: PropTypes.number,
     onFinishClick: PropTypes.func,
+    questionGenerator: PropTypes.func,
 }
 
 export default Quiz

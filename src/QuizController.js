@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Quiz from './Quiz.js'
 import QuizCompleted from './QuizCompleted.js'
@@ -53,12 +54,17 @@ class QuizController extends Component {
                     <Quiz
                         numExercises={this.state.numExercises}
                         onFinishClick={this.handleFinishClick}
+                        questionGenerator={this.props.questionGenerator}
                     />
                 )
         )
 
         return renderedComponent
     }
+}
+
+QuizController.propTypes = {
+    questionGenerator: PropTypes.func,
 }
 
 export default QuizController

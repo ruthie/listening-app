@@ -9,13 +9,17 @@ import './App.css';
 import Home from './Home.js';
 import QuizController from './QuizController.js';
 
+import { generateRandomInterval } from './IntervalExercise.js'
+
 function App() {
     return (
         <Router>
             <div className="app">
                 <Switch>
                     <Route path="/Quiz">
-                        <QuizController />
+                        <QuizController
+                            questionGenerator={generateRandomInterval}
+                        />
                     </Route>
                     <Route path="/">
                         <Home />
