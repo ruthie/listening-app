@@ -10,7 +10,7 @@ import Button from './Button.js';
 import './IntervalExercise.css';
 
 
-const INTERVAL_DISPLAY_INFO = {
+const INTERVAL_INFO = {
     m2: {
         friendlyName: 'Minor 2nd',
         layoutClassName: 'minor2',
@@ -57,28 +57,13 @@ const INTERVAL_DISPLAY_INFO = {
     },
 }
 
-const POSSIBLE_INTERVALS = [
-    Teoria.interval('m2'),
-    Teoria.interval('M2'),
-    Teoria.interval('m3'),
-    Teoria.interval('M3'),
-    Teoria.interval('P4'),
-    Teoria.interval('d5'),
-    Teoria.interval('P5'),
-    Teoria.interval('m6'),
-    Teoria.interval('M6'),
-    Teoria.interval('m7'),
-    Teoria.interval('M7'),
-    // TODO: include octave
-
-]
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
 export function generateRandomInterval() {
-    return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
+    const possibleIntervals = Object.keys(INTERVAL_INFO)
+    return possibleIntervals[getRandomInt(possibleIntervals.length)]
 }
 
 class IntervalExercise extends Component {
@@ -92,7 +77,7 @@ class IntervalExercise extends Component {
         const synth = new Tone.Synth().toMaster()
         const bottomNoteName = 'C4'
         const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), this.props.answer,
+            Teoria.note(bottomNoteName), Teoria.interval(this.props.answer),
         )
         const topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
@@ -116,7 +101,7 @@ class IntervalExercise extends Component {
                 </Button>
                 <p className="instructions-text">Identify the interval</p>
                 <div className="answer-buttons-container">
-                    {Object.entries(INTERVAL_DISPLAY_INFO).map(([intervalName, displayInfo]) => {
+                    {Object.entries(INTERVAL_INFO).map(([intervalName, displayInfo]) => {
                         const intervalFriendlyName = displayInfo.friendlyName
 
                         let color = 'white'
@@ -132,7 +117,7 @@ class IntervalExercise extends Component {
                                 color={color}
                                 onClick={onAnswerClick}
                                 layoutClassName={
-                                    INTERVAL_DISPLAY_INFO[intervalName].layoutClassName
+                                    INTERVAL_INFO[intervalName].layoutClassName
                                 }
                             />
                         )
@@ -145,7 +130,7 @@ class IntervalExercise extends Component {
 
 
 IntervalExercise.propTypes = {
-    answer: PropTypes.object, // Teoria interval
+    answer: PropTypes.string,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }

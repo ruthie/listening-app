@@ -29,7 +29,7 @@ class Quiz extends Component {
             // this is the first guess for this question
             this.state.submittedAnswers.length === 0
             // and it was correct
-            && submittedAnswer === this.state.answer.toString()
+            && submittedAnswer === this.state.answer
         ) {
             this.setState({
                 numFirstTry: this.state.numFirstTry + 1,
@@ -64,8 +64,7 @@ class Quiz extends Component {
     render() {
         const questionCompleted = (
             // we've answered correctly
-            this.state.submittedAnswers.includes(this.state.answer.toString())
-
+            this.state.submittedAnswers.includes(this.state.answer)
         )
         const isLastExercise = (
             // and this is not the last exercise
