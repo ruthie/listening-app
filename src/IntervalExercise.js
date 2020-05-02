@@ -92,7 +92,7 @@ class IntervalExercise extends Component {
         const synth = new Tone.Synth().toMaster()
         const bottomNoteName = 'C4'
         const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), this.props.interval,
+            Teoria.note(bottomNoteName), this.props.answer,
         )
         const topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
@@ -101,7 +101,7 @@ class IntervalExercise extends Component {
     }
 
     render() {
-        const { interval, submittedAnswers, onAnswerClick } = this.props;
+        const { answer, submittedAnswers, onAnswerClick } = this.props;
 
         return (
             <div>
@@ -121,7 +121,7 @@ class IntervalExercise extends Component {
 
                         let color = 'white'
                         if (submittedAnswers.includes(intervalName)) {
-                            color = intervalName === interval.toString() ? 'green' : 'red'
+                            color = intervalName === answer.toString() ? 'green' : 'red'
                         }
 
                         return (
@@ -145,7 +145,7 @@ class IntervalExercise extends Component {
 
 
 IntervalExercise.propTypes = {
-    interval: PropTypes.object, // Teoria interval
+    answer: PropTypes.object, // Teoria interval
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }

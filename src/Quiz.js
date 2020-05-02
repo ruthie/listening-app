@@ -12,7 +12,7 @@ class Quiz extends Component {
 
         this.state = {
             currentExercise: 0,
-            interval: this.props.questionGenerator(),
+            answer: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         }
@@ -23,13 +23,13 @@ class Quiz extends Component {
     }
 
     handleAnswerClick(e) {
-        const submittedInterval = e.currentTarget.value
+        const submittedAnswer = e.currentTarget.value
 
         if (
             // this is the first guess for this question
             this.state.submittedAnswers.length === 0
             // and it was correct
-            && submittedInterval === this.state.interval.toString()
+            && submittedAnswer === this.state.answer.toString()
         ) {
             this.setState({
                 numFirstTry: this.state.numFirstTry + 1,
@@ -37,14 +37,14 @@ class Quiz extends Component {
         }
 
         this.setState({
-            submittedAnswers: this.state.submittedAnswers.concat([submittedInterval]),
+            submittedAnswers: this.state.submittedAnswers.concat([submittedAnswer]),
         })
     }
 
     handleContinueClick() {
         this.setState({
             submittedAnswers: [],
-            interval: this.props.questionGenerator(),
+            answer: this.props.questionGenerator(),
             currentExercise: this.state.currentExercise + 1,
         })
     }
@@ -55,7 +55,7 @@ class Quiz extends Component {
         // clear quiz state for next time
         this.setState({
             currentExercise: 0,
-            interval: this.props.questionGenerator(),
+            answer: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         })
@@ -64,7 +64,7 @@ class Quiz extends Component {
     render() {
         const questionCompleted = (
             // we've answered correctly
-            this.state.submittedAnswers.includes(this.state.interval.toString())
+            this.state.submittedAnswers.includes(this.state.answer.toString())
 
         )
         const isLastExercise = (
@@ -75,7 +75,7 @@ class Quiz extends Component {
         return (
             <div className="quiz">
                 <IntervalExercise
-                    interval={this.state.interval}
+                    answer={this.state.answer}
                     submittedAnswers={this.state.submittedAnswers}
                     onAnswerClick={this.handleAnswerClick}
                 />
