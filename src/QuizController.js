@@ -54,6 +54,7 @@ class QuizController extends Component {
                     <Quiz
                         numExercises={this.state.numExercises}
                         onFinishClick={this.handleFinishClick}
+                        exerciseClass={this.props.exerciseClass}
                         questionGenerator={this.props.questionGenerator}
                     />
                 )
@@ -64,6 +65,7 @@ class QuizController extends Component {
 }
 
 QuizController.propTypes = {
+    exerciseClass: PropTypes.instanceOf(Component),
     questionGenerator: PropTypes.func,
 }
 

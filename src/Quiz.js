@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import IntervalExercise from './IntervalExercise.js'
 import Button from './Button.js'
 import './Quiz.css';
 
@@ -73,7 +72,7 @@ class Quiz extends Component {
 
         return (
             <div className="quiz">
-                <IntervalExercise
+                <this.props.exerciseClass
                     answer={this.state.answer}
                     submittedAnswers={this.state.submittedAnswers}
                     onAnswerClick={this.handleAnswerClick}
@@ -103,6 +102,7 @@ class Quiz extends Component {
 Quiz.propTypes = {
     numExercises: PropTypes.number,
     onFinishClick: PropTypes.func,
+    exerciseClass: PropTypes.instanceOf(Component),
     questionGenerator: PropTypes.func,
 }
 
