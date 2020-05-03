@@ -5,7 +5,7 @@ import Teoria from 'teoria';
 
 import AnswerButtons, { POSSIBLE_INTERVALS } from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
-import './DownwardIntervalExercise.css';
+import InstructionsText from './InstructionsText.js'
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -43,7 +43,7 @@ class DownwardIntervalExercise extends Component {
                 <PlayButton
                     onClick={this.playInterval}
                 />
-                <p className="instructions-text">Identify the interval</p>
+                <InstructionsText>Identify the interval</InstructionsText>
                 <AnswerButtons
                     onAnswerClick={onAnswerClick}
                     correctAnswer={answer}
