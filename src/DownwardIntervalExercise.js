@@ -5,65 +5,16 @@ import Teoria from 'teoria';
 
 import { MdVolumeUp } from 'react-icons/md';
 
-import AnswerButton from './AnswerButton.js';
+import AnswerButtons, { POSSIBLE_INTERVALS } from './AnswerButtons.js';
 import Button from './Button.js';
 import './DownwardIntervalExercise.css';
-
-
-const INTERVAL_INFO = {
-    m2: {
-        friendlyName: 'Minor 2nd',
-        layoutClassName: 'minor2',
-    },
-    M2: {
-        friendlyName: 'Major 2nd',
-        layoutClassName: 'major2',
-    },
-    m3: {
-        friendlyName: 'Minor 3rd',
-        layoutClassName: 'minor3',
-    },
-    M3: {
-        friendlyName: 'Major 3rd',
-        layoutClassName: 'major3',
-    },
-    P4: {
-        friendlyName: 'Perfect 4th',
-        layoutClassName: 'perfect4',
-    },
-    d5: {
-        friendlyName: 'Diminished 5th',
-        layoutClassName: 'diminished5',
-    },
-    P5: {
-        friendlyName: 'Perfect 5th',
-        layoutClassName: 'perfect5',
-    },
-    m6: {
-        friendlyName: 'Minor 6th',
-        layoutClassName: 'minor6',
-    },
-    M6: {
-        friendlyName: 'Major 6th',
-        layoutClassName: 'major6',
-    },
-    m7: {
-        friendlyName: 'Minor 7th',
-        layoutClassName: 'minor7',
-    },
-    M7: {
-        friendlyName: 'Major 7th',
-        layoutClassName: 'major7',
-    },
-}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
 export function generateRandomDownwardInterval() {
-    const possibleIntervals = Object.keys(INTERVAL_INFO)
-    return possibleIntervals[getRandomInt(possibleIntervals.length)]
+    return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
 }
 
 class DownwardIntervalExercise extends Component {
@@ -101,29 +52,11 @@ class DownwardIntervalExercise extends Component {
                     </div>
                 </Button>
                 <p className="instructions-text">Identify the interval</p>
-                <div className="answer-buttons-container">
-                    {Object.entries(INTERVAL_INFO).map(([intervalName, displayInfo]) => {
-                        const intervalFriendlyName = displayInfo.friendlyName
-
-                        let color = 'white'
-                        if (submittedAnswers.includes(intervalName)) {
-                            color = intervalName === answer.toString() ? 'green' : 'red'
-                        }
-
-                        return (
-                            <AnswerButton
-                                key={intervalName}
-                                text={intervalFriendlyName}
-                                value={intervalName}
-                                color={color}
-                                onClick={onAnswerClick}
-                                layoutClassName={
-                                    INTERVAL_INFO[intervalName].layoutClassName
-                                }
-                            />
-                        )
-                    })}
-                </div>
+                <AnswerButtons
+                    onAnswerClick={onAnswerClick}
+                    correctAnswer={answer}
+                    submittedAnswers={submittedAnswers}
+                />
             </div>
         )
     }
