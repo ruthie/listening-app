@@ -1,0 +1,10 @@
+.play-button {
+    border-radius: 12px;
+    background-color: #1C8FF9;
+}
+
+.play-button-sound-icon {
+    font-size: 48pt;
+    vertical-align: middle;
+    margin-right: 30px;
+}

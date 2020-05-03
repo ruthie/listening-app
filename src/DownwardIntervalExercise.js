@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { MdVolumeUp } from 'react-icons/md';
-
 import AnswerButtons, { POSSIBLE_INTERVALS } from './AnswerButtons.js';
-import Button from './Button.js';
+import PlayButton from './PlayButton.js';
 import './DownwardIntervalExercise.css';
 
 function getRandomInt(max) {
@@ -42,15 +40,9 @@ class DownwardIntervalExercise extends Component {
 
         return (
             <div>
-                <Button
+                <PlayButton
                     onClick={this.playInterval}
-                    className="play-button"
-                >
-                    <div>
-                        <MdVolumeUp className="play-button-sound-icon" />
-                        Play Interval
-                    </div>
-                </Button>
+                />
                 <p className="instructions-text">Identify the interval</p>
                 <AnswerButtons
                     onAnswerClick={onAnswerClick}
