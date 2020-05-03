@@ -11,47 +11,47 @@ import './DownwardIntervalExercise.css';
 
 
 const INTERVAL_INFO = {
-    'm-2': {
+    m2: {
         friendlyName: 'Minor 2nd',
         layoutClassName: 'minor2',
     },
-    'M-2': {
+    M2: {
         friendlyName: 'Major 2nd',
         layoutClassName: 'major2',
     },
-    'm-3': {
+    m3: {
         friendlyName: 'Minor 3rd',
         layoutClassName: 'minor3',
     },
-    'M-3': {
+    M3: {
         friendlyName: 'Major 3rd',
         layoutClassName: 'major3',
     },
-    'P-4': {
+    P4: {
         friendlyName: 'Perfect 4th',
         layoutClassName: 'perfect4',
     },
-    'd-5': {
+    d5: {
         friendlyName: 'Diminished 5th',
         layoutClassName: 'diminished5',
     },
-    'P-5': {
+    P5: {
         friendlyName: 'Perfect 5th',
         layoutClassName: 'perfect5',
     },
-    'm-6': {
+    m6: {
         friendlyName: 'Minor 6th',
         layoutClassName: 'minor6',
     },
-    'M-6': {
+    M6: {
         friendlyName: 'Major 6th',
         layoutClassName: 'major6',
     },
-    'm-7': {
+    m7: {
         friendlyName: 'Minor 7th',
         layoutClassName: 'minor7',
     },
-    'M-7': {
+    M7: {
         friendlyName: 'Major 7th',
         layoutClassName: 'major7',
     },
@@ -73,10 +73,12 @@ class DownwardIntervalExercise extends Component {
     }
 
     playInterval() {
+        const interval = Teoria.interval(this.props.answer).direction('down');
+
         const synth = new Tone.Synth().toMaster()
         const bottomNoteName = 'C5'
         const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), Teoria.interval(this.props.answer),
+            Teoria.note(bottomNoteName), interval,
         )
         const topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
