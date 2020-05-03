@@ -13,11 +13,18 @@ class Home extends Component {
                 </p>
 
                 <Link
-                    to="/quiz"
+                    to="/upward-intervals"
                     className="link-button start-quiz-button"
                 >
-                    Quiz
+                    Upward Intervals
                 </Link>
+                <Link
+                    to="/downward-intervals"
+                    className="link-button start-quiz-button"
+                >
+                    Downward Intervals
+                </Link>
+
             </div>
         )
     }

@@ -7,51 +7,51 @@ import { MdVolumeUp } from 'react-icons/md';
 
 import AnswerButton from './AnswerButton.js';
 import Button from './Button.js';
-import './UpwardIntervalExercise.css';
+import './DownwardIntervalExercise.css';
 
 
 const INTERVAL_INFO = {
-    m2: {
+    'm-2': {
         friendlyName: 'Minor 2nd',
         layoutClassName: 'minor2',
     },
-    M2: {
+    'M-2': {
         friendlyName: 'Major 2nd',
         layoutClassName: 'major2',
     },
-    m3: {
+    'm-3': {
         friendlyName: 'Minor 3rd',
         layoutClassName: 'minor3',
     },
-    M3: {
+    'M-3': {
         friendlyName: 'Major 3rd',
         layoutClassName: 'major3',
     },
-    P4: {
+    'P-4': {
         friendlyName: 'Perfect 4th',
         layoutClassName: 'perfect4',
     },
-    d5: {
+    'd-5': {
         friendlyName: 'Diminished 5th',
         layoutClassName: 'diminished5',
     },
-    P5: {
+    'P-5': {
         friendlyName: 'Perfect 5th',
         layoutClassName: 'perfect5',
     },
-    m6: {
+    'm-6': {
         friendlyName: 'Minor 6th',
         layoutClassName: 'minor6',
     },
-    M6: {
+    'M-6': {
         friendlyName: 'Major 6th',
         layoutClassName: 'major6',
     },
-    m7: {
+    'm-7': {
         friendlyName: 'Minor 7th',
         layoutClassName: 'minor7',
     },
-    M7: {
+    'M-7': {
         friendlyName: 'Major 7th',
         layoutClassName: 'major7',
     },
@@ -61,21 +61,20 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-export function generateRandomUpwardInterval() {
+export function generateRandomDownwardInterval() {
     const possibleIntervals = Object.keys(INTERVAL_INFO)
     return possibleIntervals[getRandomInt(possibleIntervals.length)]
 }
 
-class UpwardIntervalExercise extends Component {
+class DownwardIntervalExercise extends Component {
     constructor() {
         super()
         this.playInterval = this.playInterval.bind(this)
     }
 
-
     playInterval() {
         const synth = new Tone.Synth().toMaster()
-        const bottomNoteName = 'C4'
+        const bottomNoteName = 'C5'
         const topNote = Teoria.interval(
             Teoria.note(bottomNoteName), Teoria.interval(this.props.answer),
         )
@@ -129,10 +128,10 @@ class UpwardIntervalExercise extends Component {
 }
 
 
-UpwardIntervalExercise.propTypes = {
+DownwardIntervalExercise.propTypes = {
     answer: PropTypes.string,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }
 
-export default UpwardIntervalExercise
+export default DownwardIntervalExercise
