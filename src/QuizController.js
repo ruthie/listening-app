@@ -65,7 +65,7 @@ class QuizController extends Component {
 }
 
 QuizController.propTypes = {
-    exerciseClass: PropTypes.instanceOf(Component),
+    exerciseClass: PropTypes.elementType,
     questionGenerator: PropTypes.func,
 }
 

@@ -102,7 +102,9 @@ class Quiz extends Component {
 Quiz.propTypes = {
     numExercises: PropTypes.number,
     onFinishClick: PropTypes.func,
-    exerciseClass: PropTypes.instanceOf(Component),
+    // disabling eslint for the following line because eslint can't tell
+    // that exerciseClass is actually used
+    exerciseClass: PropTypes.elementType, // eslint-disable-line
     questionGenerator: PropTypes.func,
 }
 
