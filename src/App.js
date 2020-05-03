@@ -9,7 +9,7 @@ import './App.css';
 import Home from './Home.js';
 import QuizController from './QuizController.js';
 
-import IntervalExercise, { generateRandomInterval } from './IntervalExercise.js'
+import UpwardIntervalExercise, { generateRandomInterval } from './UpwardIntervalExercise.js'
 
 function App() {
     return (
@@ -18,7 +18,7 @@ function App() {
                 <Switch>
                     <Route path="/Quiz">
                         <QuizController
-                            exerciseClass={IntervalExercise}
+                            exerciseClass={UpwardIntervalExercise}
                             questionGenerator={generateRandomInterval}
                         />
                     </Route>

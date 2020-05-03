@@ -7,7 +7,7 @@ import { MdVolumeUp } from 'react-icons/md';
 
 import AnswerButton from './AnswerButton.js';
 import Button from './Button.js';
-import './IntervalExercise.css';
+import './UpwardIntervalExercise.css';
 
 
 const INTERVAL_INFO = {
@@ -66,7 +66,7 @@ export function generateRandomInterval() {
     return possibleIntervals[getRandomInt(possibleIntervals.length)]
 }
 
-class IntervalExercise extends Component {
+class UpwardIntervalExercise extends Component {
     constructor() {
         super()
         this.playInterval = this.playInterval.bind(this)
@@ -129,10 +129,10 @@ class IntervalExercise extends Component {
 }
 
 
-IntervalExercise.propTypes = {
+UpwardIntervalExercise.propTypes = {
     answer: PropTypes.string,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }
 
-export default IntervalExercise
+export default UpwardIntervalExercise
