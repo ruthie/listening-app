@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Button from './Button.js'
+import './QuizCompleted.css'
 
 class QuizCompleted extends Component {
     render() {
@@ -17,6 +19,13 @@ class QuizCompleted extends Component {
                 >
                     Try again
                 </Button>
+
+                <Link
+                    to="/"
+                    className="link-button home-button"
+                >
+                    Home
+                </Link>
             </div>
         )
     }
