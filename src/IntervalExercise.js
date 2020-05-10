@@ -10,7 +10,7 @@ import Button from './Button.js';
 import './IntervalExercise.css';
 
 
-const INTERVAL_DISPLAY_INFO = {
+const INTERVAL_INFO = {
     m2: {
         friendlyName: 'Minor 2nd',
         layoutClassName: 'minor2',
@@ -57,6 +57,15 @@ const INTERVAL_DISPLAY_INFO = {
     },
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+export function generateRandomInterval() {
+    const possibleIntervals = Object.keys(INTERVAL_INFO)
+    return possibleIntervals[getRandomInt(possibleIntervals.length)]
+}
+
 class IntervalExercise extends Component {
     constructor() {
         super()
@@ -68,7 +77,7 @@ class IntervalExercise extends Component {
         const synth = new Tone.Synth().toMaster()
         const bottomNoteName = 'C4'
         const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), this.props.interval,
+            Teoria.note(bottomNoteName), Teoria.interval(this.props.answer),
         )
         const topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
 
@@ -77,7 +86,7 @@ class IntervalExercise extends Component {
     }
 
     render() {
-        const { interval, possibleAnswers, submittedAnswers, onAnswerClick } = this.props;
+        const { answer, submittedAnswers, onAnswerClick } = this.props;
 
         return (
             <div>
@@ -92,13 +101,12 @@ class IntervalExercise extends Component {
                 </Button>
                 <p className="instructions-text">Identify the interval</p>
                 <div className="answer-buttons-container">
-                    {possibleAnswers.map(x => {
-                        const intervalName = x.toString()
-                        const intervalFriendlyName = INTERVAL_DISPLAY_INFO[intervalName].friendlyName
+                    {Object.entries(INTERVAL_INFO).map(([intervalName, displayInfo]) => {
+                        const intervalFriendlyName = displayInfo.friendlyName
 
                         let color = 'white'
-                        if (submittedAnswers.includes(x.toString())) {
-                            color = intervalName === interval.toString() ? 'green' : 'red'
+                        if (submittedAnswers.includes(intervalName)) {
+                            color = intervalName === answer.toString() ? 'green' : 'red'
                         }
 
                         return (
@@ -109,7 +117,7 @@ class IntervalExercise extends Component {
                                 color={color}
                                 onClick={onAnswerClick}
                                 layoutClassName={
-                                    INTERVAL_DISPLAY_INFO[intervalName].layoutClassName
+                                    INTERVAL_INFO[intervalName].layoutClassName
                                 }
                             />
                         )
@@ -122,8 +130,7 @@ class IntervalExercise extends Component {
 
 
 IntervalExercise.propTypes = {
-    interval: PropTypes.object, // Teoria interval
-    possibleAnswers: PropTypes.arrayOf(PropTypes.object), // Array of Teoria intervals
+    answer: PropTypes.string,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }

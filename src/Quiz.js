@@ -1,42 +1,93 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import IntervalExercise from './IntervalExercise.js'
 import Button from './Button.js'
 import './Quiz.css';
 
 
 class Quiz extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            currentExercise: 0,
+            answer: this.props.questionGenerator(),
+            submittedAnswers: [],
+            numFirstTry: 0,
+        }
+
+        this.handleAnswerClick = this.handleAnswerClick.bind(this)
+        this.handleContinueClick = this.handleContinueClick.bind(this)
+        this.handleFinishClick = this.handleFinishClick.bind(this)
+    }
+
+    handleAnswerClick(e) {
+        const submittedAnswer = e.currentTarget.value
+
+        if (
+            // this is the first guess for this question
+            this.state.submittedAnswers.length === 0
+            // and it was correct
+            && submittedAnswer === this.state.answer
+        ) {
+            this.setState({
+                numFirstTry: this.state.numFirstTry + 1,
+            })
+        }
+
+        this.setState({
+            submittedAnswers: this.state.submittedAnswers.concat([submittedAnswer]),
+        })
+    }
+
+    handleContinueClick() {
+        this.setState({
+            submittedAnswers: [],
+            answer: this.props.questionGenerator(),
+            currentExercise: this.state.currentExercise + 1,
+        })
+    }
+
+    handleFinishClick() {
+        this.props.onFinishClick(this.state.numFirstTry)
+
+        // clear quiz state for next time
+        this.setState({
+            currentExercise: 0,
+            answer: this.props.questionGenerator(),
+            submittedAnswers: [],
+            numFirstTry: 0,
+        })
+    }
+
     render() {
         const questionCompleted = (
             // we've answered correctly
-            this.props.submittedAnswers.includes(this.props.interval.toString())
-
+            this.state.submittedAnswers.includes(this.state.answer)
         )
         const isLastExercise = (
             // and this is not the last exercise
-            this.props.currentExercise === this.props.numExercises - 1
+            this.state.currentExercise === this.props.numExercises - 1
         )
 
         return (
             <div className="quiz">
-                <IntervalExercise
-                    interval={this.props.interval}
-                    possibleAnswers={this.props.possibleAnswers}
-                    submittedAnswers={this.props.submittedAnswers}
-                    onAnswerClick={this.props.onAnswerClick}
+                <this.props.exerciseClass
+                    answer={this.state.answer}
+                    submittedAnswers={this.state.submittedAnswers}
+                    onAnswerClick={this.handleAnswerClick}
                 />
                 {questionCompleted && (
                     isLastExercise ? (
                         <Button
-                            onClick={this.props.onFinishClick}
+                            onClick={this.handleFinishClick}
                             className="finish-button"
                         >
                             Finish
                         </Button>
                     ) : (
                         <Button
-                            onClick={this.props.onContinueClick}
+                            onClick={this.handleContinueClick}
                             className="continue-button"
                         >
                             Continue
@@ -49,14 +100,10 @@ class Quiz extends Component {
 
 
 Quiz.propTypes = {
-    interval: PropTypes.object, // Teoria interval
-    possibleAnswers: PropTypes.arrayOf(PropTypes.object), // Array of Teoria intervals
-    submittedAnswers: PropTypes.arrayOf(PropTypes.string), // ids  of Teoria intervals
-    onAnswerClick: PropTypes.func,
     numExercises: PropTypes.number,
-    currentExercise: PropTypes.number,
-    onContinueClick: PropTypes.func,
     onFinishClick: PropTypes.func,
+    exerciseClass: PropTypes.instanceOf(Component),
+    questionGenerator: PropTypes.func,
 }
 
 export default Quiz
