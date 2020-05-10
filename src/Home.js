@@ -24,7 +24,12 @@ class Home extends Component {
                 >
                     Downward Intervals
                 </Link>
-
+                <a
+                    href="https://github.com/ruthie/listening-app"
+                    className="source-link"
+                >
+                    Source Code
+                </a>
             </div>
         )
     }
