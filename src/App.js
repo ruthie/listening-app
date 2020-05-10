@@ -9,19 +9,27 @@ import './App.css';
 import Home from './Home.js';
 import QuizController from './QuizController.js';
 
-import IntervalExercise, { generateRandomInterval } from './IntervalExercise.js'
+import UpwardIntervalExercise, { generateRandomUpwardInterval } from './UpwardIntervalExercise.js'
+import DownwardIntervalExercise, { generateRandomDownwardInterval } from './DownwardIntervalExercise.js'
 
 function App() {
     return (
         <Router>
             <div className="app">
                 <Switch>
-                    <Route path="/Quiz">
+                    <Route path="/upward-intervals">
                         <QuizController
-                            exerciseClass={IntervalExercise}
-                            questionGenerator={generateRandomInterval}
+                            exerciseClass={UpwardIntervalExercise}
+                            questionGenerator={generateRandomUpwardInterval}
                         />
                     </Route>
+                    <Route path="/downward-intervals">
+                        <QuizController
+                            exerciseClass={DownwardIntervalExercise}
+                            questionGenerator={generateRandomDownwardInterval}
+                        />
+                    </Route>
+
                     <Route path="/">
                         <Home />
                     </Route>
