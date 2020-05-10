@@ -2,9 +2,9 @@ import React from 'react';
 
 import './InstructionsText.css'
 
-function InstructionsText() {
+function InstructionsText(props) {
     return (
-        <p className="instructions-text" />
+        <p className="instructions-text" {...props} />
     )
 }
 
