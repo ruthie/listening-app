@@ -24,7 +24,12 @@ class Home extends Component {
                 >
                     Downward Intervals
                 </Link>
-
+                <Link
+                    to="/simultaneous-intervals"
+                    className="link-button start-quiz-button"
+                >
+                    Simultaneous Intervals
+                </Link>
             </div>
         )
     }
