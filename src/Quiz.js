@@ -103,6 +103,15 @@ class Quiz extends Component {
 Quiz.propTypes = {
     numExercises: PropTypes.number,
     onFinishClick: PropTypes.func,
+
+    /* ExerciseClass and questionGenerator
+    *  The questionGenerator function needs to return an object that has
+    *  an answer key and any additional keys needed by the exercise class
+    *  For  example, for identifying intervals, the exercise needs to know
+    *  the correct answer, e.g. a fifth, but also needs to know what note to
+    *  start playing  on, so the object returned by the questionGenerator might
+    *  look like { answer: 'P5', bottomNote: 'C4'}
+    */
     // disabling eslint for the following line because eslint can't tell
     // that exerciseClass is actually used
     exerciseClass: PropTypes.elementType, // eslint-disable-line
