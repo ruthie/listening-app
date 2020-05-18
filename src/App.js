@@ -9,9 +9,10 @@ import './App.css';
 import Home from './Home.js';
 import QuizController from './QuizController.js';
 
-import UpwardIntervalExercise, { generateRandomUpwardInterval } from './UpwardIntervalExercise.js'
-import DownwardIntervalExercise, { generateRandomDownwardInterval } from './DownwardIntervalExercise.js'
-import SimultaneousIntervalExercise, { generateRandomSimultaneousInterval } from './SimultaneousIntervalExercise.js'
+import { getRandomInterval } from './utils.js'
+import UpwardIntervalExercise from './UpwardIntervalExercise.js'
+import DownwardIntervalExercise from './DownwardIntervalExercise.js'
+import SimultaneousIntervalExercise from './SimultaneousIntervalExercise.js'
 
 function App() {
     return (
@@ -21,19 +22,19 @@ function App() {
                     <Route path="/upward-intervals">
                         <QuizController
                             exerciseClass={UpwardIntervalExercise}
-                            questionGenerator={generateRandomUpwardInterval}
+                            questionGenerator={getRandomInterval}
                         />
                     </Route>
                     <Route path="/downward-intervals">
                         <QuizController
                             exerciseClass={DownwardIntervalExercise}
-                            questionGenerator={generateRandomDownwardInterval}
+                            questionGenerator={getRandomInterval}
                         />
                     </Route>
                     <Route path="/simultaneous-intervals">
                         <QuizController
                             exerciseClass={SimultaneousIntervalExercise}
-                            questionGenerator={generateRandomSimultaneousInterval}
+                            questionGenerator={getRandomInterval}
                         />
                     </Route>
 

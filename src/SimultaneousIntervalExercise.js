@@ -3,17 +3,9 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import AnswerButtons, { POSSIBLE_INTERVALS } from './AnswerButtons.js';
+import AnswerButtons from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-export function generateRandomSimultaneousInterval() {
-    return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
-}
 
 class SimultaneousIntervalExercise extends Component {
     constructor() {
