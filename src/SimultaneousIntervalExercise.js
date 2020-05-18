@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { getRandomInterval } from './utils.js';
+import { getRandomInterval, getRandomNoteInOctaveAbove } from './utils.js';
 import AnswerButtons from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
@@ -11,6 +11,7 @@ import InstructionsText from './InstructionsText.js'
 export function generateSimultaneousIntervalExercise() {
     return {
         answer: getRandomInterval(),
+        bottomNote: getRandomNoteInOctaveAbove('B3'),
     }
 }
 
@@ -21,10 +22,10 @@ class SimultaneousIntervalExercise extends Component {
     }
 
     playInterval() {
-        const interval = Teoria.interval(this.props.answer).direction('down');
+        const interval = Teoria.interval(this.props.answer)
 
         const synth = new Tone.PolySynth(2, Tone.Synth).toMaster()
-        const bottomNoteName = 'C5'
+        const bottomNoteName = this.props.exerciseInfo.bottomNote
         const topNote = Teoria.interval(
             Teoria.note(bottomNoteName), interval,
         )
@@ -55,6 +56,7 @@ class SimultaneousIntervalExercise extends Component {
 
 SimultaneousIntervalExercise.propTypes = {
     answer: PropTypes.string,
+    exerciseInfo: PropTypes.object,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }

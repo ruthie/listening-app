@@ -1,3 +1,5 @@
+import Teoria from 'teoria';
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
@@ -53,4 +55,14 @@ export const POSSIBLE_INTERVALS = Object.keys(INTERVAL_INFO)
 
 export function getRandomInterval() {
     return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
+}
+
+/* Returns a random note name between C4 and C5 inclusive
+*/
+export function getRandomNoteInOctaveAbove(bottomNoteName) {
+    // Doing this a silly way:  choose bottom note and add a random interval to it
+    const topNote = Teoria.interval(
+        Teoria.note(bottomNoteName), Teoria.interval(getRandomInterval()),
+    )
+    return topNote.name() + topNote.accidental() + topNote.octave()
 }

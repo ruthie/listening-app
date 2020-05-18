@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { getRandomInterval } from './utils.js';
+import { getRandomInterval, getRandomNoteInOctaveAbove } from './utils.js';
 import AnswerButtons from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
@@ -11,6 +11,7 @@ import InstructionsText from './InstructionsText.js'
 export function generateDownwardIntervalExercise() {
     return {
         answer: getRandomInterval(),
+        topNote: getRandomNoteInOctaveAbove('B4'),
     }
 }
 
@@ -24,14 +25,14 @@ class DownwardIntervalExercise extends Component {
         const interval = Teoria.interval(this.props.answer).direction('down');
 
         const synth = new Tone.Synth().toMaster()
-        const bottomNoteName = 'C5'
-        const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), interval,
+        const topNoteName = this.props.exerciseInfo.topNote
+        const bottomNote = Teoria.interval(
+            Teoria.note(topNoteName), interval,
         )
-        const topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
+        const bottomNoteName = bottomNote.name() + bottomNote.accidental() + bottomNote.octave()
 
-        synth.triggerAttackRelease(bottomNoteName, '4n')
-        synth.triggerAttackRelease(topNoteName, '4n', Tone.now() + Tone.Time('4n'))
+        synth.triggerAttackRelease(topNoteName, '4n')
+        synth.triggerAttackRelease(bottomNoteName, '4n', Tone.now() + Tone.Time('4n'))
     }
 
     render() {
@@ -56,6 +57,7 @@ class DownwardIntervalExercise extends Component {
 
 DownwardIntervalExercise.propTypes = {
     answer: PropTypes.string,
+    exerciseInfo: PropTypes.object,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }

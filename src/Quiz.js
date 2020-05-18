@@ -74,6 +74,7 @@ class Quiz extends Component {
             <div className="quiz">
                 <this.props.exerciseClass
                     answer={this.state.exerciseInfo.answer}
+                    exerciseInfo={this.state.exerciseInfo}
                     submittedAnswers={this.state.submittedAnswers}
                     onAnswerClick={this.handleAnswerClick}
                 />
