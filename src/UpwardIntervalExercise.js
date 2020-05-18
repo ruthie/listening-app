@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import AnswerButtons, { POSSIBLE_INTERVALS } from './AnswerButtons.js';
+import { getRandomInterval, getRandomNoteInOctaveAbove } from './utils.js';
+import AnswerButtons from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
 
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-
-export function generateRandomUpwardInterval() {
-    return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
+export function generateUpwardIntervalExercise() {
+    return {
+        answer: getRandomInterval(),
+        bottomNote: getRandomNoteInOctaveAbove('B3'),
+    }
 }
 
 class UpwardIntervalExercise extends Component {
@@ -26,7 +24,7 @@ class UpwardIntervalExercise extends Component {
 
     playInterval() {
         const synth = new Tone.Synth().toMaster()
-        const bottomNoteName = 'C4'
+        const bottomNoteName = this.props.exerciseInfo.bottomNote
         const topNote = Teoria.interval(
             Teoria.note(bottomNoteName), Teoria.interval(this.props.answer),
         )
@@ -59,6 +57,7 @@ class UpwardIntervalExercise extends Component {
 
 UpwardIntervalExercise.propTypes = {
     answer: PropTypes.string,
+    exerciseInfo: PropTypes.object,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string), // string ids  of Teoria intervals
     onAnswerClick: PropTypes.func,
 }

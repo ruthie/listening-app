@@ -11,7 +11,7 @@ class Quiz extends Component {
 
         this.state = {
             currentExercise: 0,
-            answer: this.props.questionGenerator(),
+            exerciseInfo: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         }
@@ -28,7 +28,7 @@ class Quiz extends Component {
             // this is the first guess for this question
             this.state.submittedAnswers.length === 0
             // and it was correct
-            && submittedAnswer === this.state.answer
+            && submittedAnswer === this.state.exerciseInfo.answer
         ) {
             this.setState({
                 numFirstTry: this.state.numFirstTry + 1,
@@ -43,7 +43,7 @@ class Quiz extends Component {
     handleContinueClick() {
         this.setState({
             submittedAnswers: [],
-            answer: this.props.questionGenerator(),
+            exerciseInfo: this.props.questionGenerator(),
             currentExercise: this.state.currentExercise + 1,
         })
     }
@@ -54,7 +54,7 @@ class Quiz extends Component {
         // clear quiz state for next time
         this.setState({
             currentExercise: 0,
-            answer: this.props.questionGenerator(),
+            exerciseInfo: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         })
@@ -63,7 +63,7 @@ class Quiz extends Component {
     render() {
         const questionCompleted = (
             // we've answered correctly
-            this.state.submittedAnswers.includes(this.state.answer)
+            this.state.submittedAnswers.includes(this.state.exerciseInfo.answer)
         )
         const isLastExercise = (
             // and this is not the last exercise
@@ -73,7 +73,8 @@ class Quiz extends Component {
         return (
             <div className="quiz">
                 <this.props.exerciseClass
-                    answer={this.state.answer}
+                    answer={this.state.exerciseInfo.answer}
+                    exerciseInfo={this.state.exerciseInfo}
                     submittedAnswers={this.state.submittedAnswers}
                     onAnswerClick={this.handleAnswerClick}
                 />
@@ -102,6 +103,15 @@ class Quiz extends Component {
 Quiz.propTypes = {
     numExercises: PropTypes.number,
     onFinishClick: PropTypes.func,
+
+    /* ExerciseClass and questionGenerator
+    *  The questionGenerator function needs to return an object that has
+    *  an answer key and any additional keys needed by the exercise class
+    *  For  example, for identifying intervals, the exercise needs to know
+    *  the correct answer, e.g. a fifth, but also needs to know what note to
+    *  start playing  on, so the object returned by the questionGenerator might
+    *  look like { answer: 'P5', bottomNote: 'C4'}
+    */
     // disabling eslint for the following line because eslint can't tell
     // that exerciseClass is actually used
     exerciseClass: PropTypes.elementType, // eslint-disable-line
