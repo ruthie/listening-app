@@ -11,7 +11,7 @@ class Quiz extends Component {
 
         this.state = {
             currentExercise: 0,
-            answer: this.props.questionGenerator(),
+            exerciseInfo: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         }
@@ -28,7 +28,7 @@ class Quiz extends Component {
             // this is the first guess for this question
             this.state.submittedAnswers.length === 0
             // and it was correct
-            && submittedAnswer === this.state.answer
+            && submittedAnswer === this.state.exerciseInfo.answer
         ) {
             this.setState({
                 numFirstTry: this.state.numFirstTry + 1,
@@ -43,7 +43,7 @@ class Quiz extends Component {
     handleContinueClick() {
         this.setState({
             submittedAnswers: [],
-            answer: this.props.questionGenerator(),
+            exerciseInfo: this.props.questionGenerator(),
             currentExercise: this.state.currentExercise + 1,
         })
     }
@@ -54,7 +54,7 @@ class Quiz extends Component {
         // clear quiz state for next time
         this.setState({
             currentExercise: 0,
-            answer: this.props.questionGenerator(),
+            exerciseInfo: this.props.questionGenerator(),
             submittedAnswers: [],
             numFirstTry: 0,
         })
@@ -63,7 +63,7 @@ class Quiz extends Component {
     render() {
         const questionCompleted = (
             // we've answered correctly
-            this.state.submittedAnswers.includes(this.state.answer)
+            this.state.submittedAnswers.includes(this.state.exerciseInfo.answer)
         )
         const isLastExercise = (
             // and this is not the last exercise
@@ -73,7 +73,7 @@ class Quiz extends Component {
         return (
             <div className="quiz">
                 <this.props.exerciseClass
-                    answer={this.state.answer}
+                    answer={this.state.exerciseInfo.answer}
                     submittedAnswers={this.state.submittedAnswers}
                     onAnswerClick={this.handleAnswerClick}
                 />

@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
+import { getRandomInterval } from './utils.js';
 import AnswerButtons from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
+
+export function generateDownwardIntervalExercise() {
+    return {
+        answer: getRandomInterval(),
+    }
+}
 
 class DownwardIntervalExercise extends Component {
     constructor() {
