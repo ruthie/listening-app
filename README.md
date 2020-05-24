@@ -20,6 +20,6 @@ You will also see any lint errors in the console.
 
 ## Configuration
 
-Configuration is stored in environment variables.  Default development and production configurations are in .env.development and .env.production.
+Default development and production configurations are in .env.development and .env.production.
 
 REACT_APP_NUM_QUESTIONS_IN_QUIZ -- number of questions in each quiz.  I usually develop with two questions, but have more in production.
