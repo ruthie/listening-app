@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Quiz from './Quiz.js'
 import QuizCompleted from './QuizCompleted.js'
 
-const NUM_EXERCISES = 2;
+const NUM_EXERCISES = Number.parseInt(process.env.REACT_APP_NUM_QUESTIONS_IN_QUIZ, 10)
 
 class QuizController extends Component {
     constructor() {
