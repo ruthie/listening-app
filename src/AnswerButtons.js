@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { INTERVAL_INFO, capitalizeFirstLetter } from './utils.js'
+import { INTERVAL_INFO, POSSIBLE_DIRECTIONS, capitalizeFirstLetter } from './utils.js'
 
 import './AnswerButtons.css';
 
@@ -65,7 +65,7 @@ export class SharpFlatAnswerButtons extends Component {
     render() {
         return (
             <div className="sharp-flat-answer-buttons-container">
-                {['flat', 'sharp'].map((direction) => {
+                {POSSIBLE_DIRECTIONS.map((direction) => {
                     let color = 'white'
                     if (this.props.submittedAnswers.includes(direction)) {
                         color = direction === this.props.correctAnswer.toString() ? 'green' : 'red'
