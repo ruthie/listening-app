@@ -25,7 +25,7 @@ AnswerButton.propTypes = {
     layoutClassName: PropTypes.string,
 }
 
-class AnswerButtons extends Component {
+export class IntervalAnswerButtons extends Component {
     render() {
         return (
             <div className="answer-buttons-container">
@@ -55,10 +55,8 @@ class AnswerButtons extends Component {
     }
 }
 
-AnswerButtons.propTypes = {
+IntervalAnswerButtons.propTypes = {
     correctAnswer: PropTypes.string,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string),
     onAnswerClick: PropTypes.func,
 }
-
-export default AnswerButtons
