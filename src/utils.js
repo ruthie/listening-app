@@ -70,3 +70,7 @@ export function getRandomNoteInOctaveAbove(bottomNoteName) {
     )
     return topNote.name() + topNote.accidental() + topNote.octave()
 }
+
+export function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

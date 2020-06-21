@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { INTERVAL_INFO } from './utils.js'
+import { INTERVAL_INFO, capitalizeFirstLetter } from './utils.js'
 
 import './AnswerButtons.css';
 
@@ -74,7 +74,7 @@ export class SharpFlatAnswerButtons extends Component {
                     return (
                         <AnswerButton
                             key={direction}
-                            text={direction}
+                            text={capitalizeFirstLetter(direction)}
                             value={direction}
                             color={color}
                             onClick={this.props.onAnswerClick}
