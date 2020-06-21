@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { getRandomInterval, getRandomNoteInOctaveAbove, getRandomDirection } from './utils.js';
+import { getRandomInterval, getRandomNoteInOctaveAbove, getRandomDirection, INTERVAL_INFO } from './utils.js';
 import { AnswerButton } from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
@@ -39,14 +39,17 @@ class UpwardIntervalTuningExercise extends Component {
     }
 
     render() {
-        const { answer, submittedAnswers, onAnswerClick } = this.props;
+        const { answer, exerciseInfo, submittedAnswers, onAnswerClick } = this.props;
+        const intervalName = INTERVAL_INFO[exerciseInfo.interval].friendlyName.toLowerCase()
 
         return (
             <div>
                 <PlayButton
                     onClick={this.playInterval}
                 />
-                <InstructionsText>Is the second note sharp or flat?</InstructionsText>
+                <InstructionsText>
+                    Is the second note sharp or flat of a {intervalName}?
+                </InstructionsText>
 
                 <div className="answer-buttons-container">
                     {['flat', 'sharp'].map((direction) => {
