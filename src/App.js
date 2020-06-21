@@ -12,6 +12,8 @@ import QuizController from './QuizController.js';
 import UpwardIntervalExercise, { generateUpwardIntervalExercise } from './UpwardIntervalExercise.js'
 import DownwardIntervalExercise, { generateDownwardIntervalExercise } from './DownwardIntervalExercise.js'
 import SimultaneousIntervalExercise, { generateSimultaneousIntervalExercise } from './SimultaneousIntervalExercise.js'
+import UpwardIntervalTuningExercise, { generateUpwardIntervalTuningExercise } from './UpwardIntervalTuningExercise.js'
+
 
 function App() {
     return (
@@ -36,7 +38,12 @@ function App() {
                             questionGenerator={generateSimultaneousIntervalExercise}
                         />
                     </Route>
-
+                    <Route path="/upward-interval-tuning">
+                        <QuizController
+                            exerciseClass={UpwardIntervalTuningExercise}
+                            questionGenerator={generateUpwardIntervalTuningExercise}
+                        />
+                    </Route>
                     <Route path="/">
                         <Home />
                     </Route>

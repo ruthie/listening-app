@@ -57,6 +57,10 @@ export function getRandomInterval() {
     return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
 }
 
+export function getRandomDirection() {
+    return ['sharp', 'flat'][getRandomInt(2)]
+}
+
 /* Returns a random note name between C4 and C5 inclusive
 */
 export function getRandomNoteInOctaveAbove(bottomNoteName) {

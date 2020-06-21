@@ -5,7 +5,7 @@ import { INTERVAL_INFO } from './utils.js'
 
 import './AnswerButtons.css';
 
-function AnswerButton({ text, onClick, value, color, layoutClassName }) {
+export function AnswerButton({ text, onClick, value, color, layoutClassName }) {
     return (
         <button
             value={value}
