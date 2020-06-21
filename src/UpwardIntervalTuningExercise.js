@@ -4,7 +4,7 @@ import Tone from 'tone';
 import Teoria from 'teoria';
 
 import { getRandomInterval, getRandomNoteInOctaveAbove, getRandomDirection, INTERVAL_INFO } from './utils.js';
-import { AnswerButton } from './AnswerButtons.js';
+import { SharpFlatAnswerButtons } from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
 
@@ -51,29 +51,11 @@ class UpwardIntervalTuningExercise extends Component {
                     Is the second note sharp or flat of a {intervalName}?
                 </InstructionsText>
 
-                <div className="answer-buttons-container">
-                    {['flat', 'sharp'].map((direction) => {
-                        let color = 'white'
-                        if (submittedAnswers.includes(direction)) {
-                            color = direction === this.props.answer.toString() ? 'green' : 'red'
-                        }
-
-                        return (
-                            <AnswerButton
-                                key={direction}
-                                text={direction}
-                                value={direction}
-                                color={color}
-                                onClick={this.props.onAnswerClick}
-                                layoutClassName=""
-
-                                onAnswerClick={onAnswerClick}
-                                correctAnswer={answer}
-                                submittedAnswers={submittedAnswers}
-                            />
-                        )
-                    })}
-                </div>
+                <SharpFlatAnswerButtons
+                    onAnswerClick={onAnswerClick}
+                    correctAnswer={answer}
+                    submittedAnswers={submittedAnswers}
+                />
             </div>
         )
     }

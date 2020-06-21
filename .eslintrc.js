@@ -19,6 +19,7 @@ module.exports = {
         "react/no-access-state-in-setstate": "off",
         "react/jsx-props-no-spreading": "off",
         "object-shorthand": "off",
-        "react/jsx-one-expression-per-line": "off"
+        "react/jsx-one-expression-per-line": "off",
+        "max-classes-per-file": "off",
     },
 }
