@@ -28,7 +28,7 @@ AnswerButton.propTypes = {
 export class IntervalAnswerButtons extends Component {
     render() {
         return (
-            <div className="answer-buttons-container">
+            <div className="interval-answer-buttons-container">
                 {Object.entries(INTERVAL_INFO).map(([intervalName, displayInfo]) => {
                     const intervalFriendlyName = displayInfo.friendlyName
 
@@ -64,7 +64,7 @@ IntervalAnswerButtons.propTypes = {
 export class SharpFlatAnswerButtons extends Component {
     render() {
         return (
-            <div className="answer-buttons-container">
+            <div className="sharp-flat-answer-buttons-container">
                 {['flat', 'sharp'].map((direction) => {
                     let color = 'white'
                     if (this.props.submittedAnswers.includes(direction)) {
@@ -78,7 +78,7 @@ export class SharpFlatAnswerButtons extends Component {
                             value={direction}
                             color={color}
                             onClick={this.props.onAnswerClick}
-                            layoutClassName=""
+                            layoutClassName={direction}
                         />
                     )
                 })}
