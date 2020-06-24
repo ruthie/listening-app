@@ -78,5 +78,6 @@ export function capitalizeFirstLetter(string) {
 }
 
 export function getRandomPitchDeviation() {
-    return Math.random() * (1.03 - 1.01) + 1.01
+    // For our two test subjects, 1.02 was barely possible
+    return Math.random() * (1.03 - 1.025) + 1.025
 }
