@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { getRandomInterval, getRandomNoteInOctaveAbove, getRandomDirection, INTERVAL_INFO } from './utils.js';
+import { getRandomInterval, getRandomNoteInOctaveAbove, getRandomDirection,
+    INTERVAL_INFO, getRandomPitchDeviation } from './utils.js';
 import { SharpFlatAnswerButtons } from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
@@ -14,6 +15,7 @@ export function generateUpwardIntervalTuningExercise() {
         answer: getRandomDirection(),
         interval: getRandomInterval(),
         bottomNote: getRandomNoteInOctaveAbove('B3'),
+        pitchDeviation: getRandomPitchDeviation(),
     }
 }
 
@@ -25,16 +27,18 @@ class UpwardIntervalTuningExercise extends Component {
 
 
     playInterval() {
+        const { bottomNote, pitchDeviation } = this.props.exerciseInfo
+
         const synth = new Tone.Synth().toMaster()
-        const bottomNoteName = this.props.exerciseInfo.bottomNote
         const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), Teoria.interval(this.props.exerciseInfo.interval),
+            Teoria.note(bottomNote), Teoria.interval(this.props.exerciseInfo.interval),
         )
         const inTuneTopNoteFreq = topNote.fq();
-        const adjustmentRatio = this.props.answer === 'sharp' ? 1.03 : 1.0 / 1.03
+
+        const adjustmentRatio = this.props.answer === 'sharp' ? pitchDeviation : 1.0 / pitchDeviation
         const adjustedTopNotFreq = inTuneTopNoteFreq * adjustmentRatio
 
-        synth.triggerAttackRelease(bottomNoteName, '4n')
+        synth.triggerAttackRelease(bottomNote, '4n')
         synth.triggerAttackRelease(adjustedTopNotFreq, '4n', Tone.now() + Tone.Time('4n'))
     }
 

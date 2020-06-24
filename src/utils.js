@@ -76,3 +76,7 @@ export function getRandomNoteInOctaveAbove(bottomNoteName) {
 export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function getRandomPitchDeviation() {
+    return Math.random() * (1.03 - 1.01) + 1.01
+}
