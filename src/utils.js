@@ -51,10 +51,19 @@ export const INTERVAL_INFO = {
     },
 }
 
-export const POSSIBLE_INTERVALS = Object.keys(INTERVAL_INFO)
+const ALL_INTERVALS = Object.keys(INTERVAL_INFO)
+const TUNING_INTERVALS = ['M2', 'm3', 'M3', 'P4', 'P5']
+
+function getRandomItemFromList(list) {
+    return list[getRandomInt(list.length)]
+}
 
 export function getRandomInterval() {
-    return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
+    return getRandomItemFromList(ALL_INTERVALS)
+}
+
+export function getRandomTuningInterval() {
+    return getRandomItemFromList(TUNING_INTERVALS)
 }
 
 export const POSSIBLE_DIRECTIONS = ['sharp', 'flat'];

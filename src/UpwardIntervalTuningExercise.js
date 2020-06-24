@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { getRandomInterval, getRandomNoteInOctaveAbove, getRandomDirection,
+import { getRandomTuningInterval, getRandomNoteInOctaveAbove, getRandomDirection,
     INTERVAL_INFO, getRandomPitchDeviation } from './utils.js';
 import { SharpFlatAnswerButtons } from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
@@ -13,7 +13,7 @@ import InstructionsText from './InstructionsText.js'
 export function generateUpwardIntervalTuningExercise() {
     return {
         answer: getRandomDirection(),
-        interval: getRandomInterval(),
+        interval: getRandomTuningInterval(),
         bottomNote: getRandomNoteInOctaveAbove('B3'),
         pitchDeviation: getRandomPitchDeviation(),
     }
