@@ -17,7 +17,7 @@ To run the app in the development mode, run: `npm start`, and open [http://local
 
 The page will reload if you make edits. You will also see any lint errors in the console.
 
-## Configuration
+### Configuration
 
 Default development and production configurations are in .env.development and .env.production.
 
