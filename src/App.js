@@ -13,6 +13,8 @@ import UpwardIntervalExercise, { generateUpwardIntervalExercise } from './Upward
 import DownwardIntervalExercise, { generateDownwardIntervalExercise } from './DownwardIntervalExercise.js'
 import SimultaneousIntervalExercise, { generateSimultaneousIntervalExercise } from './SimultaneousIntervalExercise.js'
 
+import ChordProgressionExercise, { generateChordProgressionExercise } from './ChordProgressionExercise.js'
+
 function App() {
     return (
         <Router>
@@ -34,6 +36,13 @@ function App() {
                         <QuizController
                             exerciseClass={SimultaneousIntervalExercise}
                             questionGenerator={generateSimultaneousIntervalExercise}
+                        />
+                    </Route>
+
+                    <Route path="/chord-progressions">
+                        <QuizController
+                            exerciseClass={ChordProgressionExercise}
+                            questionGenerator={generateChordProgressionExercise}
                         />
                     </Route>
 

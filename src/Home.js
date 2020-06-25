@@ -30,6 +30,12 @@ class Home extends Component {
                 >
                     Simultaneous Intervals
                 </Link>
+                <Link
+                    to="/chord-progressions"
+                    className="link-button start-quiz-button"
+                >
+                    Chord Progressions
+                </Link>
                 <a
                     href="https://github.com/ruthie/listening-app"
                     className="source-link"
