@@ -66,3 +66,9 @@ export function getRandomNoteInOctaveAbove(bottomNoteName) {
     )
     return topNote.name() + topNote.accidental() + topNote.octave()
 }
+
+
+// TODO: use this in more places
+export function teoriaNoteToToneJs(note) {
+    return note.name() + note.accidental() + note.octave()
+}

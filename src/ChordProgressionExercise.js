@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tone from 'tone';
 import Teoria from 'teoria';
 
-import { getRandomInterval, getRandomNoteInOctaveAbove } from './utils.js';
+import { getRandomInterval, getRandomNoteInOctaveAbove, teoriaNoteToToneJs } from './utils.js';
 import AnswerButtons from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
@@ -18,20 +18,16 @@ export function generateChordProgressionExercise() {
 class ChordProgressionExercise extends Component {
     constructor() {
         super()
-        this.playInterval = this.playInterval.bind(this)
+        this.playChord = this.playChord.bind(this)
     }
 
 
-    playInterval() {
-        const synth = new Tone.Synth().toMaster()
-        const bottomNoteName = this.props.exerciseInfo.bottomNote
-        const topNote = Teoria.interval(
-            Teoria.note(bottomNoteName), Teoria.interval(this.props.answer),
-        )
-        const topNoteName = topNote.name() + topNote.accidental() + topNote.octave()
-
-        synth.triggerAttackRelease(bottomNoteName, '4n')
-        synth.triggerAttackRelease(topNoteName, '4n', Tone.now() + Tone.Time('4n'))
+    playChord() {
+        const synth = new Tone.PolySynth(20, Tone.Synth).toMaster()
+        const chord = Teoria.chord('CM')
+        const notes = chord.notes().map(n => teoriaNoteToToneJs(n))
+        console.log(notes)
+        synth.triggerAttackRelease(notes, '2n')
     }
 
     render() {
@@ -40,7 +36,7 @@ class ChordProgressionExercise extends Component {
         return (
             <div>
                 <PlayButton
-                    onClick={this.playInterval}
+                    onClick={this.playChord}
                 />
                 <InstructionsText>Identify the interval</InstructionsText>
 
