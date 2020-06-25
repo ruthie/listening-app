@@ -14,7 +14,7 @@ export function generateDownwardIntervalTuningExercise() {
     return {
         answer: getRandomDirection(),
         interval: getRandomTuningInterval(),
-        bottomNote: getRandomNoteInOctaveAbove('B3'),
+        topNote: getRandomNoteInOctaveAbove('B3'),
         pitchDeviation: getRandomPitchDeviation(),
     }
 }
@@ -27,20 +27,20 @@ class DownwardIntervalTuningExercise extends Component {
 
 
     playInterval() {
-        const { bottomNote, pitchDeviation, interval } = this.props.exerciseInfo
+        const { topNote, pitchDeviation, interval } = this.props.exerciseInfo
         const downwardInterval = Teoria.interval(interval).direction('down');
 
         const synth = new Tone.Synth().toMaster()
-        const topNote = Teoria.interval(
-            Teoria.note(bottomNote), downwardInterval,
+        const bottomNote = Teoria.interval(
+            Teoria.note(topNote), downwardInterval,
         )
-        const inTuneTopNoteFreq = topNote.fq();
+        const inTuneBottomNoteFreq = bottomNote.fq();
 
         const adjustmentRatio = this.props.answer === 'sharp' ? pitchDeviation : 1.0 / pitchDeviation
-        const adjustedTopNotFreq = inTuneTopNoteFreq * adjustmentRatio
+        const adjustedBottomNotFreq = inTuneBottomNoteFreq * adjustmentRatio
 
-        synth.triggerAttackRelease(bottomNote, '4n')
-        synth.triggerAttackRelease(adjustedTopNotFreq, '4n', Tone.now() + Tone.Time('4n'))
+        synth.triggerAttackRelease(topNote, '4n')
+        synth.triggerAttackRelease(adjustedBottomNotFreq, '4n', Tone.now() + Tone.Time('4n'))
     }
 
     render() {
