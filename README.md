@@ -7,6 +7,10 @@ It is a client side only act built with React
 ## Development
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Requirements
+We suggest developing this project using Node >= v14.4.0 and `npm` >= 6.14.4.
+
+### Running the App
 To set up your development environment, run: `npm install`
 
 To run the app in the development mode, run: `npm start`, and open [http://localhost:3000](http://localhost:3000) to view it in the browser.
