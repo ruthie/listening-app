@@ -52,7 +52,7 @@ class UpwardIntervalTuningExercise extends Component {
                     onClick={this.playInterval}
                 />
                 <InstructionsText>
-                    Is the second note sharp or flat of a {intervalName}?
+                    Is the second note sharp or flat of a {intervalName} above the first note?
                 </InstructionsText>
 
                 <SharpFlatAnswerButtons
