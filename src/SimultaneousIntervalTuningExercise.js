@@ -51,7 +51,7 @@ class SimultaneousIntervalTuningExercise extends Component {
                     onClick={this.playInterval}
                 />
                 <InstructionsText>
-                    Is the second note sharp or flat of a {intervalName} above the first note?
+                    Is the top note sharp or flat of a {intervalName} above the bottom note?
                 </InstructionsText>
 
                 <SharpFlatAnswerButtons
