@@ -16,25 +16,27 @@ class Home extends Component {
                 </div>
 
                 <div className="max-width content">
-                    <div className="three-exercise-container">
-                        <Link
-                            to="/upward-intervals"
-                            className="link-button start-quiz-button exercise-1"
-                        >
-                            Up
-                        </Link>
-                        <Link
-                            to="/downward-intervals"
-                            className="link-button start-quiz-button exercise-2"
-                        >
-                            Down
-                        </Link>
-                        <Link
-                            to="/simultaneous-intervals"
-                            className="link-button start-quiz-button exercise-3"
-                        >
-                            Same
-                        </Link>
+                    <div>
+                        <div className="three-exercise-container">
+                            <Link
+                                to="/upward-intervals"
+                                className="link-button start-quiz-button exercise-1"
+                            >
+                                Up
+                            </Link>
+                            <Link
+                                to="/downward-intervals"
+                                className="link-button start-quiz-button exercise-2"
+                            >
+                                Down
+                            </Link>
+                            <Link
+                                to="/simultaneous-intervals"
+                                className="link-button start-quiz-button exercise-3"
+                            >
+                                Same
+                            </Link>
+                        </div>
                     </div>
                     <a
                         href="https://github.com/ruthie/listening-app"
