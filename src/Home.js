@@ -16,24 +16,26 @@ class Home extends Component {
                 </div>
 
                 <div className="max-width content">
-                    <Link
-                        to="/upward-intervals"
-                        className="link-button start-quiz-button"
-                    >
-                        Upward Intervals
-                    </Link>
-                    <Link
-                        to="/downward-intervals"
-                        className="link-button start-quiz-button"
-                    >
-                        Downward Intervals
-                    </Link>
-                    <Link
-                        to="/simultaneous-intervals"
-                        className="link-button start-quiz-button"
-                    >
-                        Simultaneous Intervals
-                    </Link>
+                    <div className="three-exercise-container">
+                        <Link
+                            to="/upward-intervals"
+                            className="link-button start-quiz-button exercise-1"
+                        >
+                            Up
+                        </Link>
+                        <Link
+                            to="/downward-intervals"
+                            className="link-button start-quiz-button exercise-2"
+                        >
+                            Down
+                        </Link>
+                        <Link
+                            to="/simultaneous-intervals"
+                            className="link-button start-quiz-button exercise-3"
+                        >
+                            Same
+                        </Link>
+                    </div>
                     <a
                         href="https://github.com/ruthie/listening-app"
                         className="source-link"

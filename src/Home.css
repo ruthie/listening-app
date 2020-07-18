@@ -18,3 +18,25 @@
     display: block;
     padding-top: 30px;
 }
+
+.three-exercise-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  1;
+    grid-column-gap: 20px;
+}
+
+.exercise-1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.exercise-3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.exercise-3 {
+    grid-row: 1;
+    grid-column: 3;
+}
