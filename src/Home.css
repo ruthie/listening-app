@@ -13,8 +13,9 @@
 }
 
 .exercise-link {
-    padding-right: 10px;
-    padding-left: 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 30%;
 
     /* text */
     text-align: center;
@@ -31,7 +32,7 @@
 
 .three-exercise-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     /* spacing */
     padding-bottom: 20px;
