@@ -13,7 +13,8 @@
 }
 
 .exercise-link {
-    padding: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
 
     /* text */
     text-align: center;
@@ -32,8 +33,12 @@
     display: flex;
     justify-content: space-evenly;
 
+    /* spacing */
     padding-bottom: 20px;
+    padding-top: 20px;
 
+
+    /* horizontal line between exercises */
     border-bottom: 1px solid #F0F0F0;
 }
 

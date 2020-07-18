@@ -24,21 +24,21 @@ class Home extends Component {
                                 className="exercise-link"
                             >
                                 <CircleIcon color="blue" symbol="upward" />
-                                <p> Upward Interval Identification</p>
+                                <div> Upward Interval Identification</div>
                             </Link>
                             <Link
                                 to="/downward-intervals"
                                 className="exercise-link"
                             >
                                 <CircleIcon color="blue" symbol="downward" />
-                                <p> Upward Interval Identification</p>
+                                <div> Downward Interval Identification</div>
                             </Link>
                             <Link
                                 to="/simultaneous-intervals"
                                 className="exercise-link"
                             >
                                 <CircleIcon color="blue" symbol="simultaneous" />
-                                <p> Upward Interval Identification</p>
+                                <div> Simultaneous Interval Identification</div>
                             </Link>
                         </div>
                         <div className="three-exercise-container">
@@ -47,21 +47,21 @@ class Home extends Component {
                                 className="exercise-link"
                             >
                                 <CircleIcon color="green" symbol="upward" />
-                                <p> Upward Interval Tuning</p>
+                                <div> Upward Interval Tuning</div>
                             </Link>
                             <Link
                                 to="/downward-interval-tuning"
                                 className="exercise-link"
                             >
                                 <CircleIcon color="green" symbol="downward" />
-                                <p> Downward Interval Tuning</p>
+                                <div> Downward Interval Tuning</div>
                             </Link>
                             <Link
                                 to="/simultaneous-interval-tuning"
                                 className="exercise-link"
                             >
                                 <CircleIcon color="green" symbol="simultaneous" />
-                                <p> simultaneous Interval Tuning</p>
+                                <div> Simultaneous Interval Tuning</div>
                             </Link>
                         </div>
                     </div>
