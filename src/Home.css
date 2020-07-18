@@ -1,3 +1,13 @@
+.top-bar {
+    background-color: #2e2e2e;
+    height: 40px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 22pt;
+    font-weight: bold;
+}
+
 .start-quiz-button  {
     background-color: #60BD48;
 }

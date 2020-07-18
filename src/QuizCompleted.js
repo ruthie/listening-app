@@ -9,7 +9,7 @@ class QuizCompleted extends Component {
     render() {
         const message = `You got ${this.props.numFirstTry} out of ${this.props.numExercises} on the first try!`;
         return (
-            <div>
+            <div className="content max-width">
                 <p>
                     {message}
                 </p>
