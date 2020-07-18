@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CircleIcon from './CircleIcon/index.js'
 
 import './Home.css'
 import './LinkButton.css'
@@ -20,41 +21,47 @@ class Home extends Component {
                         <div className="three-exercise-container">
                             <Link
                                 to="/upward-intervals"
-                                className="link-button start-quiz-button"
+                                className="exercise-link"
                             >
-                                Up
+                                <CircleIcon color="blue" symbol="upward" />
+                                <p> Upward Interval Identification</p>
                             </Link>
                             <Link
                                 to="/downward-intervals"
-                                className="link-button start-quiz-button"
+                                className="exercise-link"
                             >
-                                Down
+                                <CircleIcon color="blue" symbol="downward" />
+                                <p> Upward Interval Identification</p>
                             </Link>
                             <Link
                                 to="/simultaneous-intervals"
-                                className="link-button start-quiz-button"
+                                className="exercise-link"
                             >
-                                Same
+                                <CircleIcon color="blue" symbol="simultaneous" />
+                                <p> Upward Interval Identification</p>
                             </Link>
                         </div>
                         <div className="three-exercise-container">
                             <Link
                                 to="/upward-interval-tuning"
-                                className="link-button start-quiz-button"
+                                className="exercise-link"
                             >
-                                Up
+                                <CircleIcon color="green" symbol="upward" />
+                                <p> Upward Interval Tuning</p>
                             </Link>
                             <Link
                                 to="/downward-interval-tuning"
-                                className="link-button start-quiz-button"
+                                className="exercise-link"
                             >
-                                Down
+                                <CircleIcon color="green" symbol="downward" />
+                                <p> Downward Interval Tuning</p>
                             </Link>
                             <Link
                                 to="/simultaneous-interval-tuning"
-                                className="link-button start-quiz-button"
+                                className="exercise-link"
                             >
-                                Same
+                                <CircleIcon color="green" symbol="simultaneous" />
+                                <p> simultaneous Interval Tuning</p>
                             </Link>
                         </div>
                     </div>

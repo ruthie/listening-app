@@ -12,6 +12,15 @@
     background-color: #60BD48;
 }
 
+.exercise-link {
+    padding: 10px;
+
+    /* text */
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 14pt;
+}
 
 .source-link {
     text-align: center;
