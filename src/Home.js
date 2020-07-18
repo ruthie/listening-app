@@ -37,6 +37,26 @@ class Home extends Component {
                                 Same
                             </Link>
                         </div>
+                        <div className="three-exercise-container">
+                            <Link
+                                to="/upward-interval-tuning"
+                                className="link-button start-quiz-button"
+                            >
+                                Up
+                            </Link>
+                            <Link
+                                to="/downward-interval-tuning"
+                                className="link-button start-quiz-button"
+                            >
+                                Down
+                            </Link>
+                            <Link
+                                to="/simultaneous-interval-tuning"
+                                className="link-button start-quiz-button"
+                            >
+                                Same
+                            </Link>
+                        </div>
                     </div>
                     <a
                         href="https://github.com/ruthie/listening-app"
@@ -44,8 +64,7 @@ class Home extends Component {
                     >
                         Source Code
                     </a>
-                </div>
-            </div>
+                </div>            </div>
         )
     }
 }

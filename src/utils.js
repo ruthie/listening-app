@@ -51,10 +51,25 @@ export const INTERVAL_INFO = {
     },
 }
 
-export const POSSIBLE_INTERVALS = Object.keys(INTERVAL_INFO)
+const ALL_INTERVALS = Object.keys(INTERVAL_INFO)
+const TUNING_INTERVALS = ['M2', 'm3', 'M3', 'P4', 'P5']
+
+function getRandomItemFromList(list) {
+    return list[getRandomInt(list.length)]
+}
 
 export function getRandomInterval() {
-    return POSSIBLE_INTERVALS[getRandomInt(POSSIBLE_INTERVALS.length)]
+    return getRandomItemFromList(ALL_INTERVALS)
+}
+
+export function getRandomTuningInterval() {
+    return getRandomItemFromList(TUNING_INTERVALS)
+}
+
+export const POSSIBLE_DIRECTIONS = ['sharp', 'flat'];
+
+export function getRandomDirection() {
+    return POSSIBLE_DIRECTIONS[getRandomInt(POSSIBLE_DIRECTIONS.length)]
 }
 
 /* Returns a random note name between C4 and C5 inclusive
@@ -65,4 +80,13 @@ export function getRandomNoteInOctaveAbove(bottomNoteName) {
         Teoria.note(bottomNoteName), Teoria.interval(getRandomInterval()),
     )
     return topNote.name() + topNote.accidental() + topNote.octave()
+}
+
+export function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function getRandomPitchDeviation() {
+    // For our two test subjects, 1.02 was barely possible
+    return Math.random() * (1.03 - 1.025) + 1.025
 }

@@ -12,6 +12,10 @@ import QuizController from './QuizController.js';
 import UpwardIntervalExercise, { generateUpwardIntervalExercise } from './UpwardIntervalExercise.js'
 import DownwardIntervalExercise, { generateDownwardIntervalExercise } from './DownwardIntervalExercise.js'
 import SimultaneousIntervalExercise, { generateSimultaneousIntervalExercise } from './SimultaneousIntervalExercise.js'
+import UpwardIntervalTuningExercise, { generateUpwardIntervalTuningExercise } from './UpwardIntervalTuningExercise.js'
+import DownwardIntervalTuningExercise, { generateDownwardIntervalTuningExercise } from './DownwardIntervalTuningExercise.js'
+import SimultaneousIntervalTuningExercise, { generateSimultaneousIntervalTuningExercise } from './SimultaneousIntervalTuningExercise.js'
+
 
 function App() {
     return (
@@ -36,7 +40,24 @@ function App() {
                             questionGenerator={generateSimultaneousIntervalExercise}
                         />
                     </Route>
-
+                    <Route path="/upward-interval-tuning">
+                        <QuizController
+                            exerciseClass={UpwardIntervalTuningExercise}
+                            questionGenerator={generateUpwardIntervalTuningExercise}
+                        />
+                    </Route>
+                    <Route path="/downward-interval-tuning">
+                        <QuizController
+                            exerciseClass={DownwardIntervalTuningExercise}
+                            questionGenerator={generateDownwardIntervalTuningExercise}
+                        />
+                    </Route>
+                    <Route path="/simultaneous-interval-tuning">
+                        <QuizController
+                            exerciseClass={SimultaneousIntervalTuningExercise}
+                            questionGenerator={generateSimultaneousIntervalTuningExercise}
+                        />
+                    </Route>
                     <Route path="/">
                         <Home />
                     </Route>
