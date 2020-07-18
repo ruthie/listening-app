@@ -1,0 +1,14 @@
+.cicon {
+    opacity: 0.8;
+    transition: opacity 250ms ease-in-out;
+    width: 100%;
+}
+
+.cicon:hover {
+    opacity: 1;
+}
+
+.cicon__foreground {
+    fill: #FFF;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
+}
