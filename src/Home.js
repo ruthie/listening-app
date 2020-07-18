@@ -20,19 +20,19 @@ class Home extends Component {
                         <div className="three-exercise-container">
                             <Link
                                 to="/upward-intervals"
-                                className="link-button start-quiz-button exercise-1"
+                                className="link-button start-quiz-button"
                             >
                                 Up
                             </Link>
                             <Link
                                 to="/downward-intervals"
-                                className="link-button start-quiz-button exercise-2"
+                                className="link-button start-quiz-button"
                             >
                                 Down
                             </Link>
                             <Link
                                 to="/simultaneous-intervals"
-                                className="link-button start-quiz-button exercise-3"
+                                className="link-button start-quiz-button"
                             >
                                 Same
                             </Link>
