@@ -4,7 +4,7 @@ import Tone from 'tone';
 import Teoria from 'teoria';
 
 import { getRandomInterval, getRandomNoteInOctaveAbove } from './utils.js';
-import AnswerButtons from './AnswerButtons.js';
+import { IntervalAnswerButtons } from './AnswerButtons.js';
 import PlayButton from './PlayButton.js';
 import InstructionsText from './InstructionsText.js'
 
@@ -43,7 +43,7 @@ class SimultaneousIntervalExercise extends Component {
                     onClick={this.playInterval}
                 />
                 <InstructionsText>Identify the interval</InstructionsText>
-                <AnswerButtons
+                <IntervalAnswerButtons
                     onAnswerClick={onAnswerClick}
                     correctAnswer={answer}
                     submittedAnswers={submittedAnswers}

@@ -30,6 +30,24 @@ class Home extends Component {
                 >
                     Simultaneous Intervals
                 </Link>
+                <Link
+                    to="/upward-interval-tuning"
+                    className="link-button start-quiz-button"
+                >
+                    Upward Interval Tuning
+                </Link>
+                <Link
+                    to="/downward-interval-tuning"
+                    className="link-button start-quiz-button"
+                >
+                    Downward Interval Tuning
+                </Link>
+                <Link
+                    to="/simultaneous-interval-tuning"
+                    className="link-button start-quiz-button"
+                >
+                    Simultaneous Interval Tuning
+                </Link>
                 <a
                     href="https://github.com/ruthie/listening-app"
                     className="source-link"

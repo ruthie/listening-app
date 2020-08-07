@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { INTERVAL_INFO } from './utils.js'
+import { INTERVAL_INFO, POSSIBLE_DIRECTIONS, capitalizeFirstLetter } from './utils.js'
 
 import './AnswerButtons.css';
 
@@ -25,10 +25,10 @@ AnswerButton.propTypes = {
     layoutClassName: PropTypes.string,
 }
 
-class AnswerButtons extends Component {
+export class IntervalAnswerButtons extends Component {
     render() {
         return (
-            <div className="answer-buttons-container">
+            <div className="interval-answer-buttons-container">
                 {Object.entries(INTERVAL_INFO).map(([intervalName, displayInfo]) => {
                     const intervalFriendlyName = displayInfo.friendlyName
 
@@ -55,10 +55,40 @@ class AnswerButtons extends Component {
     }
 }
 
-AnswerButtons.propTypes = {
+IntervalAnswerButtons.propTypes = {
     correctAnswer: PropTypes.string,
     submittedAnswers: PropTypes.arrayOf(PropTypes.string),
     onAnswerClick: PropTypes.func,
 }
 
-export default AnswerButtons
+export class SharpFlatAnswerButtons extends Component {
+    render() {
+        return (
+            <div className="sharp-flat-answer-buttons-container">
+                {POSSIBLE_DIRECTIONS.map((direction) => {
+                    let color = 'white'
+                    if (this.props.submittedAnswers.includes(direction)) {
+                        color = direction === this.props.correctAnswer.toString() ? 'green' : 'red'
+                    }
+
+                    return (
+                        <AnswerButton
+                            key={direction}
+                            text={capitalizeFirstLetter(direction)}
+                            value={direction}
+                            color={color}
+                            onClick={this.props.onAnswerClick}
+                            layoutClassName={direction}
+                        />
+                    )
+                })}
+            </div>
+        )
+    }
+}
+
+SharpFlatAnswerButtons.propTypes = {
+    correctAnswer: PropTypes.string,
+    submittedAnswers: PropTypes.arrayOf(PropTypes.string),
+    onAnswerClick: PropTypes.func,
+}
