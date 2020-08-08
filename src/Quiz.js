@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from './Button.js'
+import QuizProgress from './QuizProgress.js'
 import './Quiz.css';
 
 
@@ -72,6 +73,12 @@ class Quiz extends Component {
 
         return (
             <div className="quiz">
+
+                <QuizProgress
+                    currentQuestion={!questionCompleted ? this.state.currentExercise : this.state.currentExercise + 1}
+                    totalQuestions={this.props.numExercises}
+                />
+
                 <this.props.exerciseClass
                     answer={this.state.exerciseInfo.answer}
                     exerciseInfo={this.state.exerciseInfo}
