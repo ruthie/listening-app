@@ -17,6 +17,10 @@ To run the app in the development mode, run: `npm start`, and open [http://local
 
 The page will reload if you make edits. You will also see any lint errors in the console.
 
+### Deploying
+
+Run `npm run deploy` to trigger the github pages build/deploy.  Changes may take a few minutes to propagate.
+
 ### Creating a new exercise
 * Create a new file with the exercise name, e.g. MyNewExircise.js.
 * In that file add a function, e.g. generateMyNewExercise, that returns an object with an `answer` key and any other information needed to reproduce the exercise
