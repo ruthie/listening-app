@@ -1,10 +1,17 @@
 .app {
-    max-width: 500px;
-    padding: 10px;
-    margin: auto;
     font-family: 'Quicksand', sans-serif;
 }
 
 .app button:focus {
   outline: none;
+}
+
+.max-width {
+    max-width: 500px;
+    margin: auto;
+    overflow-x: hidden;
+}
+
+.content {
+    padding: 10px;
 }

@@ -71,7 +71,7 @@ class Quiz extends Component {
         )
 
         return (
-            <div className="quiz">
+            <div className="quiz content max-width">
                 <this.props.exerciseClass
                     answer={this.state.exerciseInfo.answer}
                     exerciseInfo={this.state.exerciseInfo}
